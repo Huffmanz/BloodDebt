@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://k0b7bq4x6osb"]
+[gd_scene load_steps=10 format=3 uid="uid://k0b7bq4x6osb"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_v6xto"]
 [ext_resource type="PackedScene" uid="uid://bmqxntns8k615" path="res://movement/velocity_component.tscn" id="2_3dy3y"]
@@ -18,7 +18,10 @@ gradient = SubResource("Gradient_liawh")
 width = 16
 height = 16
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_nw0u4"]
+radius = 32.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_v6xto")
 
@@ -27,6 +30,14 @@ shape = SubResource("CapsuleShape2D_sim1c")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_3dy3y")]
 max_speed = 150
+
+[node name="DashingComponent" parent="." instance=ExtResource("2_3dy3y")]
+max_speed = 500
+acceleration = 500.0
+
+[node name="DashTimer" type="Timer" parent="DashingComponent"]
+wait_time = 0.25
+one_shot = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_sa1f4")]
 
@@ -47,3 +58,10 @@ script = ExtResource("4_cw4nm")
 [node name="attack_timer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_nw0u4")

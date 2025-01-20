@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxy2wkr77qtfl"]
+[gd_scene load_steps=11 format=3 uid="uid://cxy2wkr77qtfl"]
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_8lvpl"]
 [ext_resource type="Script" path="res://movement/velocity_component.gd" id="1_f11ad"]
 [ext_resource type="PackedScene" uid="uid://ba3o6wranxgfb" path="res://combat/health_component.tscn" id="2_0f1q0"]
 [ext_resource type="Script" path="res://combat/hurtbox_component.gd" id="3_nqemj"]
+[ext_resource type="PackedScene" uid="uid://b7ypim4t8ele4" path="res://items/item_drop_component.tscn" id="4_p048s"]
 [ext_resource type="Script" path="res://combat/hitbox_component.gd" id="5_03rxt"]
+[ext_resource type="PackedScene" uid="uid://csbfy5b34ecv5" path="res://items/blood_vial/blood_vial.tscn" id="5_hqfns"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jp4u5"]
 size = Vector2(16, 16)
@@ -28,12 +30,18 @@ shape = SubResource("RectangleShape2D_jp4u5")
 script = ExtResource("1_f11ad")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_0f1q0")]
+max_health = 1.0
+
+[node name="ItemDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_p048s")]
+drop_percent = 1.0
+health_component = NodePath("../HealthComponent")
+item_scene = ExtResource("5_hqfns")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_jdy51")
 
 [node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
-collision_layer = 0
+collision_layer = 16
 collision_mask = 16
 script = ExtResource("3_nqemj")
 health_component = NodePath("../HealthComponent")

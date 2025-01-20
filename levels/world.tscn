@@ -5,7 +5,11 @@
 
 [node name="world" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_yb148")]
+[node name="entities" type="Node2D" parent="." groups=["entities_layer"]]
 
-[node name="enemy" parent="." instance=ExtResource("2_2h41v")]
+[node name="Player" parent="entities" instance=ExtResource("1_yb148")]
+
+[node name="enemy" parent="entities" instance=ExtResource("2_2h41v")]
 position = Vector2(306, 118)
+
+[node name="foreground" type="Node2D" parent="." groups=["foreground_layer"]]

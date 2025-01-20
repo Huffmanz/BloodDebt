@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://csbfy5b34ecv5"]
+
+[ext_resource type="Script" path="res://items/blood_vial/blood_vial.gd" id="1_ldumt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u284k"]
+radius = 5.0
+
+[sub_resource type="Gradient" id="Gradient_1mg57"]
+colors = PackedColorArray(0.877136, 0, 0.292229, 1, 0.878431, 0, 0.294118, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t0t14"]
+gradient = SubResource("Gradient_1mg57")
+width = 8
+height = 8
+
+[node name="BloodVial" type="Node2D"]
+script = ExtResource("1_ldumt")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_u284k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_t0t14")
