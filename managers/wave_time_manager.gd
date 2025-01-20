@@ -23,10 +23,11 @@ func start_wave():
 	timer.wait_time = next_wave_time
 	current_wave += 1
 	timer.start()
+	GameEvents.wave_started.emit(current_wave)
 	
 func get_time_elapsed():
 	return timer.time_left
 	
 func on_timer_timeout():
-	GameEvents.wave_complete.emit()
+	GameEvents.wave_complete.emit(current_wave)
 	#MetaProgression.save()

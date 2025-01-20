@@ -6,6 +6,5 @@ extends CharacterBody2D
 func _ready():
 	health_component.died.connect(on_died)
 	
-	
 func on_died():
 	queue_free()
