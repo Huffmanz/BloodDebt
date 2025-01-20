@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://k0b7bq4x6osb"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_v6xto"]
+[ext_resource type="PackedScene" uid="uid://ba3o6wranxgfb" path="res://combat/health_component.tscn" id="2_sa1f4"]
+[ext_resource type="PackedScene" uid="uid://c4toavcgqire5" path="res://combat/hurtbox_component.tscn" id="3_ycwor"]
+[ext_resource type="Script" path="res://player/camera_2d.gd" id="4_cw4nm"]
+
+[sub_resource type="Gradient" id="Gradient_liawh"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xra6q"]
+gradient = SubResource("Gradient_liawh")
+width = 16
+height = 16
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sim1c"]
+radius = 8.0
+height = 16.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_v6xto")
+max_speed = 120
+acceleration = 10.0
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_sa1f4")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_xra6q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_sim1c")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_ycwor")]
+collision_layer = 0
+collision_mask = 4
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CapsuleShape2D_sim1c")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("4_cw4nm")
