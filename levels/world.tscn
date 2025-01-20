@@ -1,9 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dh4g5lvct4ome"]
+[gd_scene load_steps=5 format=3 uid="uid://dh4g5lvct4ome"]
 
+[ext_resource type="PackedScene" uid="uid://df6l8uwqvwnk7" path="res://managers/wave_time_manager.tscn" id="1_ue0gm"]
 [ext_resource type="PackedScene" uid="uid://k0b7bq4x6osb" path="res://player/player.tscn" id="1_yb148"]
 [ext_resource type="PackedScene" uid="uid://cxy2wkr77qtfl" path="res://enemy/enemy.tscn" id="2_2h41v"]
+[ext_resource type="PackedScene" uid="uid://sbpofqbqkvxd" path="res://ui/wave_time_ui.tscn" id="2_b67d3"]
 
 [node name="world" type="Node2D"]
+
+[node name="WaveTimeManager" parent="." instance=ExtResource("1_ue0gm")]
+
+[node name="WaveTimeUI" parent="." node_paths=PackedStringArray("wave_time_manager") instance=ExtResource("2_b67d3")]
+wave_time_manager = NodePath("../WaveTimeManager")
 
 [node name="entities" type="Node2D" parent="." groups=["entities_layer"]]
 
