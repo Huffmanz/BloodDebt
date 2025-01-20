@@ -1,14 +1,31 @@
-[gd_scene load_steps=8 format=3 uid="uid://dh4g5lvct4ome"]
+[gd_scene load_steps=10 format=3 uid="uid://dh4g5lvct4ome"]
 
+[ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="1_jcdjx"]
 [ext_resource type="PackedScene" uid="uid://df6l8uwqvwnk7" path="res://managers/wave_time_manager.tscn" id="1_ue0gm"]
 [ext_resource type="PackedScene" uid="uid://k0b7bq4x6osb" path="res://player/player.tscn" id="1_yb148"]
 [ext_resource type="PackedScene" uid="uid://sbpofqbqkvxd" path="res://ui/wave_time_ui.tscn" id="2_b67d3"]
 [ext_resource type="PackedScene" uid="uid://dx2xpus7nlxvw" path="res://managers/enemy_manager.tscn" id="3_0oc6b"]
-[ext_resource type="PackedScene" uid="uid://dunw7oi01pqr7" path="res://enemy/cursed_villager.tscn" id="4_7hdus"]
-[ext_resource type="PackedScene" uid="uid://b2mnperhbmrcn" path="res://enemy/demon.tscn" id="5_gc7j2"]
+[ext_resource type="PackedScene" path="res://enemy/cursed_villager.tscn" id="4_7hdus"]
+[ext_resource type="PackedScene" uid="uid://bhs7q2klj6dtq" path="res://enemy/demon.tscn" id="5_gc7j2"]
 [ext_resource type="PackedScene" uid="uid://biy2a0xfjo8ji" path="res://managers/demon_manager.tscn" id="6_envjh"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7rwuf"]
+shader = ExtResource("1_jcdjx")
+shader_parameter/outerRadius = 5.0
+shader_parameter/MainAlpha = 1.0
+shader_parameter/vignette_color = null
+
 [node name="world" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_7rwuf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="DemonManager" parent="." node_paths=PackedStringArray("demon") instance=ExtResource("6_envjh")]
 demon = NodePath("../entities/Demon")

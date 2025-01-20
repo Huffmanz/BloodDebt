@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://buo2m1t7hq112"]
+[gd_scene load_steps=3 format=3 uid="uid://buo2m1t7hq112"]
 
 [ext_resource type="PackedScene" uid="uid://b07sdwdmbai0f" path="res://combat/projectile.tscn" id="1_7vumq"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qg4v0"]
+
 [node name="PlayerProjectile" instance=ExtResource("1_7vumq")]
 
-[node name="HitboxComponent" parent="." index="3"]
+[node name="HitboxComponent" parent="." index="1"]
 damage = 5
+
+[node name="Sprite2D" parent="." index="3"]
+material = SubResource("ShaderMaterial_qg4v0")
