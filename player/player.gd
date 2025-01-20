@@ -2,14 +2,16 @@ extends CharacterBody2D
 
 const PLAYER_PROJECTILE = preload("res://combat/player_projectile.tscn")
 
-@onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
 @onready var velocity_component: VelocityComponent = $VelocityComponent
+@onready var health_component: HealthComponent = $HealthComponent
+@onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
 @onready var attack_timer: Timer = $attack_timer
 
 var direction := Vector2.ZERO
 var can_shoot := true
 
 func _ready() -> void:
+	health_component.died.connect(on_died)
 	hurtbox_component.hit.connect(_hurtbox_hit)
 	attack_timer.timeout.connect(_attack_timer_timeout)
 
@@ -28,6 +30,7 @@ func fire():
 		return
 	var mouse_direction = get_global_mouse_position() - global_position
 	var projectile : CharacterBody2D = PLAYER_PROJECTILE.instantiate()
+	health_component.reduce_health(1)
 	get_tree().current_scene.add_child(projectile)
 	projectile.global_position = global_position
 	projectile.rotation = mouse_direction.angle()
@@ -41,3 +44,5 @@ func _hurtbox_hit():
 func _attack_timer_timeout():
 	can_shoot = true
 	
+func on_died():
+	print("DEAD")

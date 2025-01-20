@@ -12,10 +12,13 @@ func _ready():
 	current_health = max_health
 
 func damage(damage_amount: float):
-	current_health = clamp(current_health-damage_amount, 0, max_health)
-	health_changed.emit()
+	reduce_health(damage_amount)
 	if damage_amount > 0:
 		health_decreased.emit()
+		
+func reduce_health(amount: float):
+	current_health = clamp(current_health-amount, 0, max_health)
+	health_changed.emit()
 	Callable(check_death).call_deferred()
 	
 func heal(heal_amount: float):
@@ -30,4 +33,3 @@ func get_health_percent():
 func check_death():
 	if current_health == 0:
 		died.emit()
-		#owner.queue_free()
