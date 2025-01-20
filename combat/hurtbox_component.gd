@@ -17,3 +17,5 @@ func on_area_entered(other_area:Area2D):
 		
 	var hitbox_component = other_area as HitboxComponent
 	health_component.damage(hitbox_component.damage)
+	GameEvents.frameFreeze(0.1, 0.3)
+	hit.emit()

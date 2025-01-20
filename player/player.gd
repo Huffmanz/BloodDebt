@@ -38,7 +38,7 @@ func fire():
 	attack_timer.start()
 	
 func _hurtbox_hit():
-	GameEvents.frameFreeze(0.1, 0.3)
+	#GameEvents.frameFreeze(0.1, 0.3)
 	GameEvents.emit_camera_shake(5)
 	
 func _attack_timer_timeout():

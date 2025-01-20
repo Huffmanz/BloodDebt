@@ -26,6 +26,7 @@ script = ExtResource("1_v6xto")
 shape = SubResource("CapsuleShape2D_sim1c")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_3dy3y")]
+max_speed = 150
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_sa1f4")]
 
