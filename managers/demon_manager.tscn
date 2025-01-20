@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://biy2a0xfjo8ji"]
+
+[ext_resource type="Script" path="res://managers/demon_manager.gd" id="1_i83b5"]
+
+[node name="DemonManager" type="Node"]
+script = ExtResource("1_i83b5")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true

@@ -18,7 +18,7 @@ gradient = SubResource("Gradient_1hdem")
 width = 16
 height = 16
 
-[node name="enemy" type="CharacterBody2D"]
+[node name="enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
 script = ExtResource("1_8lvpl")
 

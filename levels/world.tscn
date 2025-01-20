@@ -1,13 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://dh4g5lvct4ome"]
+[gd_scene load_steps=8 format=3 uid="uid://dh4g5lvct4ome"]
 
 [ext_resource type="PackedScene" uid="uid://df6l8uwqvwnk7" path="res://managers/wave_time_manager.tscn" id="1_ue0gm"]
 [ext_resource type="PackedScene" uid="uid://k0b7bq4x6osb" path="res://player/player.tscn" id="1_yb148"]
 [ext_resource type="PackedScene" uid="uid://sbpofqbqkvxd" path="res://ui/wave_time_ui.tscn" id="2_b67d3"]
+[ext_resource type="PackedScene" uid="uid://dx2xpus7nlxvw" path="res://managers/enemy_manager.tscn" id="3_0oc6b"]
 [ext_resource type="PackedScene" uid="uid://dunw7oi01pqr7" path="res://enemy/cursed_villager.tscn" id="4_7hdus"]
+[ext_resource type="PackedScene" uid="uid://b2mnperhbmrcn" path="res://enemy/demon.tscn" id="5_gc7j2"]
+[ext_resource type="PackedScene" uid="uid://biy2a0xfjo8ji" path="res://managers/demon_manager.tscn" id="6_envjh"]
 
 [node name="world" type="Node2D"]
 
+[node name="DemonManager" parent="." node_paths=PackedStringArray("demon") instance=ExtResource("6_envjh")]
+demon = NodePath("../entities/Demon")
+
 [node name="WaveTimeManager" parent="." instance=ExtResource("1_ue0gm")]
+
+[node name="EnemyManager" parent="." node_paths=PackedStringArray("wave_timer_manager") instance=ExtResource("3_0oc6b")]
+wave_timer_manager = NodePath("../WaveTimeManager")
 
 [node name="WaveTimeUI" parent="." node_paths=PackedStringArray("wave_time_manager") instance=ExtResource("2_b67d3")]
 wave_time_manager = NodePath("../WaveTimeManager")
@@ -15,8 +24,12 @@ wave_time_manager = NodePath("../WaveTimeManager")
 [node name="entities" type="Node2D" parent="." groups=["entities_layer"]]
 
 [node name="Player" parent="entities" instance=ExtResource("1_yb148")]
+position = Vector2(321, 180)
 
 [node name="cursed_villager" parent="entities" instance=ExtResource("4_7hdus")]
-position = Vector2(285, 151)
+position = Vector2(82, 100)
+
+[node name="Demon" parent="entities" instance=ExtResource("5_gc7j2")]
+position = Vector2(321, 130)
 
 [node name="foreground" type="Node2D" parent="." groups=["foreground_layer"]]

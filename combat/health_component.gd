@@ -22,6 +22,7 @@ func reduce_health(amount: float):
 	Callable(check_death).call_deferred()
 	
 func heal(heal_amount: float):
+	max_health += heal_amount
 	current_health = clamp(current_health+heal_amount, 0, max_health)
 	health_changed.emit()
 	

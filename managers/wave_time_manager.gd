@@ -1,3 +1,4 @@
+class_name WaveManager
 extends Node
 
 signal wave_difficulty_increased(arena_difficulty: int)
@@ -10,6 +11,7 @@ var current_wave = 0
 
 func _ready():
 	$Timer.timeout.connect(on_timer_timeout)
+	GameEvents.wave_start_next.connect(start_wave)
 	start_wave()
 	
 func _process(delta):
@@ -29,5 +31,10 @@ func get_time_elapsed():
 	return timer.time_left
 	
 func on_timer_timeout():
+	ScreenTransition.transition()
+	await ScreenTransition.transitioned_halfway
+	for enemy in get_tree().get_nodes_in_group("enemy"):
+		enemy.queue_free()
+	(get_tree().get_first_node_in_group("player") as Player).reset_location()
 	GameEvents.wave_complete.emit(current_wave)
 	#MetaProgression.save()

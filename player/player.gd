@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 const PLAYER_PROJECTILE = preload("res://combat/player_projectile.tscn")
@@ -13,6 +14,7 @@ var direction := Vector2.ZERO
 var can_shoot := true
 var dashing := false
 var dash_direction:=Vector2.ZERO
+var spawn_position = Vector2.ZERO
 
 func _ready() -> void:
 	health_component.died.connect(on_died)
@@ -21,6 +23,7 @@ func _ready() -> void:
 	GameEvents.player_blood_gained.connect(_player_blood_gained)
 	health_component.health_changed.connect(_player_health_changed)
 	dash_timer.timeout.connect(_dash_timeout)
+	spawn_position = global_position
 
 func _physics_process(delta: float) -> void:
 	direction.x = Input.get_axis("move_left", "move_right")
@@ -66,6 +69,9 @@ func _player_health_changed():
 	
 func _dash_timeout():
 	dashing = false
+	
+func reset_location():
+	global_position = spawn_position
 	
 func on_died():
 	print("DEAD")
