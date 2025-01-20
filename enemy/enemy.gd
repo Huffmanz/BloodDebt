@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var item_drop_component: Node = $ItemDropComponent
+@onready var velocity_component: VelocityComponent = $VelocityComponent
+
 
 var dead := false
 
