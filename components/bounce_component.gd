@@ -11,6 +11,8 @@ const RECOVERY_FACTOR = 0.5
 
 signal tween_completed
 
+
+
 func start():
 	if start_at_top:
 		var drop_tween = drop_down(drop_height)
