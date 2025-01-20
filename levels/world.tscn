@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://df6l8uwqvwnk7" path="res://managers/wave_time_manager.tscn" id="1_ue0gm"]
 [ext_resource type="PackedScene" uid="uid://k0b7bq4x6osb" path="res://player/player.tscn" id="1_yb148"]
-[ext_resource type="PackedScene" uid="uid://cxy2wkr77qtfl" path="res://enemy/enemy.tscn" id="2_2h41v"]
 [ext_resource type="PackedScene" uid="uid://sbpofqbqkvxd" path="res://ui/wave_time_ui.tscn" id="2_b67d3"]
+[ext_resource type="PackedScene" uid="uid://dunw7oi01pqr7" path="res://enemy/cursed_villager.tscn" id="4_7hdus"]
 
 [node name="world" type="Node2D"]
 
@@ -16,7 +16,7 @@ wave_time_manager = NodePath("../WaveTimeManager")
 
 [node name="Player" parent="entities" instance=ExtResource("1_yb148")]
 
-[node name="enemy" parent="entities" instance=ExtResource("2_2h41v")]
-position = Vector2(306, 118)
+[node name="cursed_villager" parent="entities" instance=ExtResource("4_7hdus")]
+position = Vector2(285, 151)
 
 [node name="foreground" type="Node2D" parent="." groups=["foreground_layer"]]

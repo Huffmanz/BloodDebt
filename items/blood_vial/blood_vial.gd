@@ -3,9 +3,12 @@ extends Node2D
 @onready var area_2d: Area2D = $Area2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
+@onready var bounce_component: BounceComponent = $BounceComponent
+
 
 func _ready():
 	area_2d.area_entered.connect(on_area_entered)
+	bounce_component.start()
 	
 func tween_collect(percent: float, start_position: Vector2):
 	var player = get_tree().get_first_node_in_group("player")

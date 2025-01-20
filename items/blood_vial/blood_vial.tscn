@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://csbfy5b34ecv5"]
+[gd_scene load_steps=6 format=3 uid="uid://csbfy5b34ecv5"]
 
 [ext_resource type="Script" path="res://items/blood_vial/blood_vial.gd" id="1_ldumt"]
+[ext_resource type="PackedScene" uid="uid://bucmp1fx2yrco" path="res://components/bounce_component.tscn" id="2_srgo7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u284k"]
 radius = 5.0
@@ -25,3 +26,8 @@ shape = SubResource("CircleShape2D_u284k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_t0t14")
+
+[node name="BounceComponent" parent="." node_paths=PackedStringArray("host_node") instance=ExtResource("2_srgo7")]
+host_node = NodePath("../Sprite2D")
+drop_height = 100
+start_at_top = false
