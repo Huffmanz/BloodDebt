@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cevkfv0pqm5ui"]
+
+[ext_resource type="Script" path="res://combat/health_regen_component.gd" id="1_h27dx"]
+
+[node name="HealthRegenComponent" type="Node"]
+script = ExtResource("1_h27dx")
+regen_amount = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
