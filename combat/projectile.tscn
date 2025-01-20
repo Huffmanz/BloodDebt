@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://b07sdwdmbai0f"]
+
+[ext_resource type="Script" path="res://combat/hitbox_component.gd" id="1_eq3x5"]
+[ext_resource type="Script" path="res://combat/projectile.gd" id="1_k8ttn"]
+[ext_resource type="PackedScene" uid="uid://bmqxntns8k615" path="res://movement/velocity_component.tscn" id="2_mawv0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r1p78"]
+radius = 4.0
+
+[sub_resource type="Gradient" id="Gradient_gh60e"]
+colors = PackedColorArray(0.551887, 0, 0.154044, 1, 0.552941, 0, 0.152941, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h8kav"]
+gradient = SubResource("Gradient_gh60e")
+width = 8
+height = 8
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ic065"]
+radius = 4.0
+
+[node name="Projectile" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_k8ttn")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("2_mawv0")]
+max_speed = 500
+acceleration = 50.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_r1p78")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_h8kav")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 17
+script = ExtResource("1_eq3x5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_ic065")
+
+[node name="DeleteTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
