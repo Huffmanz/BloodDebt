@@ -1,8 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://csbfy5b34ecv5"]
+[gd_scene load_steps=11 format=3 uid="uid://csbfy5b34ecv5"]
 
 [ext_resource type="Script" path="res://items/blood_vial/blood_vial.gd" id="1_ldumt"]
 [ext_resource type="Texture2D" uid="uid://0p331f0feoqw" path="res://assets/sprite_sheet.png" id="2_q0l1f"]
 [ext_resource type="PackedScene" uid="uid://bucmp1fx2yrco" path="res://components/bounce_component.tscn" id="2_srgo7"]
+[ext_resource type="PackedScene" uid="uid://dp2d5yhhoypry" path="res://components/random_stream_player.tscn" id="4_8sj3r"]
+[ext_resource type="AudioStream" uid="uid://cdy3rooyb8a1i" path="res://assets/sfx/collect/impactGeneric_light_000.ogg" id="5_ktn7b"]
+[ext_resource type="AudioStream" uid="uid://p5kyua8h4pyw" path="res://assets/sfx/collect/impactGeneric_light_001.ogg" id="6_uwki4"]
+[ext_resource type="AudioStream" uid="uid://6bg7q0mgtvwh" path="res://assets/sfx/collect/impactGeneric_light_002.ogg" id="7_l42bn"]
+[ext_resource type="AudioStream" uid="uid://cjdgyfc42mskx" path="res://assets/sfx/collect/impactGeneric_light_003.ogg" id="8_uirlv"]
+[ext_resource type="AudioStream" uid="uid://bpc3nsbdguvb2" path="res://assets/sfx/collect/impactGeneric_light_004.ogg" id="9_r5ke2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u284k"]
 radius = 5.0
@@ -28,3 +34,7 @@ region_rect = Rect2(0, 0, 16, 16)
 host_node = NodePath("../Sprite2D")
 drop_height = 40
 start_at_top = false
+
+[node name="CollectStreamPlayer" parent="." instance=ExtResource("4_8sj3r")]
+bus = &"sfx"
+streams = Array[AudioStream]([ExtResource("5_ktn7b"), ExtResource("6_uwki4"), ExtResource("7_l42bn"), ExtResource("8_uirlv"), ExtResource("9_r5ke2")])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxy2wkr77qtfl"]
+[gd_scene load_steps=8 format=3 uid="uid://cxy2wkr77qtfl"]
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_8lvpl"]
 [ext_resource type="Script" path="res://movement/velocity_component.gd" id="1_f11ad"]
@@ -10,17 +10,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jp4u5"]
 size = Vector2(14, 24)
 
-[sub_resource type="Gradient" id="Gradient_1hdem"]
-colors = PackedColorArray(0.41593, 0, 0.0219934, 1, 0.415686, 0, 0.0235294, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jdy51"]
-gradient = SubResource("Gradient_1hdem")
-width = 16
-height = 16
-
 [node name="enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
 script = ExtResource("1_8lvpl")
+
+[node name="Visuals" type="Node2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jp4u5")
@@ -32,9 +26,6 @@ script = ExtResource("1_f11ad")
 max_health = 1.0
 
 [node name="ItemDropComponent" parent="." instance=ExtResource("4_p048s")]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_jdy51")
 
 [node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 collision_layer = 16

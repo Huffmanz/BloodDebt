@@ -4,11 +4,14 @@ extends CharacterBody2D
 @onready var velocity_component: VelocityComponent = $VelocityComponent
 @onready var delete_timer: Timer = $DeleteTimer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var impact_stream_player: AudioStreamPlayer2D = $ImpactStreamPlayer
+@onready var shoot_stream_player: AudioStreamPlayer2D = $ShootStreamPlayer
 
 func _ready():
 	hitbox_component.area_entered.connect(on_area_entered)
 	hitbox_component.body_entered.connect(on_body_entered)
 	delete_timer.timeout.connect(_on_delete_timeout)
+	shoot_stream_player.play_random()
 
 func _physics_process(delta: float) -> void:
 	velocity = velocity_component.accelerate_in_direction(global_transform.x)
@@ -19,6 +22,9 @@ func on_area_entered(other_area:Node2D):
 		return 
 	set_physics_process(false)
 	animated_sprite_2d.visible = false
+	impact_stream_player.play_random()
+	animated_sprite_2d.visible = false
+	await impact_stream_player.finished
 	queue_free()
 	
 func on_body_entered(other_body):

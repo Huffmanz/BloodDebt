@@ -11,7 +11,7 @@ var direction = Vector2.ZERO
 
 func _ready() -> void:
 	sprite_2d.texture = texture.pick_random()
-	bounce_component.drop_height = randf_range(50,150)
+	bounce_component.drop_height = randf_range(50,100)
 	bounce_component.start()
 	bounce_component.tween_completed.connect(on_tween_complete)
 	direction.x = randf_range(-1, 1)

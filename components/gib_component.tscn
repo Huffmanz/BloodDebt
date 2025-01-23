@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbcpcxppiwla"]
+[gd_scene load_steps=11 format=3 uid="uid://bbcpcxppiwla"]
 
 [ext_resource type="Script" path="res://components/gib_component.gd" id="1_slj2s"]
 [ext_resource type="PackedScene" uid="uid://cmi8cl87udr2g" path="res://components/gibs/bone_gib.tscn" id="2_u0n7l"]
 [ext_resource type="PackedScene" uid="uid://08ijqabft852" path="res://components/gibs/flesh_gib.tscn" id="3_7p7mt"]
 [ext_resource type="Texture2D" uid="uid://dgkimua4kv5tu" path="res://assets/gore/blood_Drop.png" id="5_73lcp"]
 [ext_resource type="PackedScene" uid="uid://ckgsnbbiephfg" path="res://components/gibs/lung_gib.tscn" id="5_hxypi"]
+[ext_resource type="PackedScene" uid="uid://dp2d5yhhoypry" path="res://components/random_stream_player.tscn" id="6_28cv8"]
+[ext_resource type="AudioStream" uid="uid://b4pm5wc03sbxj" path="res://assets/sfx/681767__supersouper__big-impact-blood-1.wav" id="7_usivl"]
+[ext_resource type="AudioStream" uid="uid://dj4trg7h5h5v5" path="res://assets/sfx/681768__supersouper__big-impact-blood-2.wav" id="8_efwrg"]
+[ext_resource type="AudioStream" uid="uid://dsxno6iu31e8h" path="res://assets/sfx/681769__supersouper__big-impact-blood-3.wav" id="9_cvna3"]
 
 [sub_resource type="Curve" id="Curve_fgnm4"]
 _data = [Vector2(0, 0.174894), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -40,3 +44,7 @@ color = Color(0.666667, 0, 0.164706, 1)
 wait_time = 5.0
 one_shot = true
 autostart = true
+
+[node name="RandomStreamPlayer" parent="." instance=ExtResource("6_28cv8")]
+bus = &"sfx"
+streams = Array[AudioStream]([ExtResource("7_usivl"), ExtResource("8_efwrg"), ExtResource("9_cvna3")])

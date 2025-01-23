@@ -4,6 +4,7 @@ extends Node2D
 @export var gibs: Array[PackedScene]
 @onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
 @onready var timer: Timer = $Timer
+@onready var random_stream_player: AudioStreamPlayer2D = $RandomStreamPlayer
 
 
 func _ready() -> void:
@@ -13,5 +14,6 @@ func _ready() -> void:
 		instance.global_position = global_position
 		get_tree().current_scene.add_child(instance)
 	cpu_particles_2d.emitting = true
+	random_stream_player.play_random()
 	
 	

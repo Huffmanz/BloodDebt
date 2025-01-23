@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://k0b7bq4x6osb"]
+[gd_scene load_steps=37 format=3 uid="uid://k0b7bq4x6osb"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_v6xto"]
 [ext_resource type="PackedScene" uid="uid://bmqxntns8k615" path="res://movement/velocity_component.tscn" id="2_3dy3y"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" path="res://combat/health_regen_component.tscn" id="4_jp21s"]
 [ext_resource type="Texture2D" uid="uid://c361mkbgpq3vc" path="res://assets/AnimationSheet_Character.png" id="6_df26f"]
 [ext_resource type="PackedScene" uid="uid://do5cddj67pykp" path="res://components/shadow.tscn" id="6_n21ws"]
+[ext_resource type="PackedScene" uid="uid://dp2d5yhhoypry" path="res://components/random_stream_player.tscn" id="9_njxbq"]
+[ext_resource type="AudioStream" uid="uid://bviuo82ojsx7m" path="res://assets/sfx/player/Hero_hit_1.mp3" id="10_t4uf8"]
+[ext_resource type="AudioStream" uid="uid://d155vg1f75xy7" path="res://assets/sfx/player/Hero_hit_2.mp3" id="11_d6g6r"]
+[ext_resource type="AudioStream" uid="uid://brpluue0bmxu2" path="res://assets/sfx/player/Hero_hit_3.mp3" id="12_hg5fe"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sim1c"]
 radius = 8.0
@@ -234,5 +238,9 @@ one_shot = true
 collision_layer = 64
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+[node name="PickupShape" type="CollisionShape2D" parent="PickupArea"]
 shape = SubResource("CircleShape2D_nw0u4")
+
+[node name="HurtAudioPlayer" parent="." instance=ExtResource("9_njxbq")]
+bus = &"sfx"
+streams = Array[AudioStream]([ExtResource("10_t4uf8"), ExtResource("11_d6g6r"), ExtResource("12_hg5fe")])

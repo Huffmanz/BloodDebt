@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://c57pm8gbu44vx"]
+
+[ext_resource type="Script" path="res://ui/blood_hud.gd" id="1_j4nxm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5qfy6"]
+font_size = 24
+outline_size = 8
+outline_color = Color(0.227451, 0.0352941, 0.0666667, 1)
+
+[node name="BloodHud" type="CanvasLayer"]
+script = ExtResource("1_j4nxm")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BloodText" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "90
+"
+label_settings = SubResource("LabelSettings_5qfy6")

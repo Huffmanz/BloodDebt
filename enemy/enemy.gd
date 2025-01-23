@@ -6,8 +6,7 @@ extends CharacterBody2D
 @onready var velocity_component: VelocityComponent = $VelocityComponent
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
-
-
+@onready var visuals: Node2D = $Visuals
 var dead := false
 
 func _ready():
@@ -25,3 +24,13 @@ func _died():
 	
 func _items_spawned():
 	queue_free()
+	
+func flip():
+	var move_sign = sign(velocity.x)
+	if(move_sign != 0):
+		visuals.scale = Vector2(move_sign, 1)
+		
+	if move_sign == 0:
+		move_sign = sign((get_global_mouse_position() - global_position).x)
+		if(move_sign != 0):
+			visuals.scale = Vector2(move_sign, 1)

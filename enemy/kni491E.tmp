@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dunw7oi01pqr7"]
+[gd_scene load_steps=28 format=3 uid="uid://dunw7oi01pqr7"]
 
 [ext_resource type="PackedScene" uid="uid://cxy2wkr77qtfl" path="res://enemy/enemy.tscn" id="1_6y1gp"]
 [ext_resource type="PackedScene" uid="uid://csbfy5b34ecv5" path="res://items/blood_vial/blood_vial.tscn" id="2_3emie"]
@@ -8,9 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://dwtiaupvo1kb" path="res://assets/Pixel Crawler/Weapons/Wood/Wood.png" id="5_jpqd4"]
 [ext_resource type="Texture2D" uid="uid://xwxsxnl71wt4" path="res://assets/Pixel Crawler/Weapons/Hands/Hands.png" id="6_gp4ox"]
 [ext_resource type="PackedScene" uid="uid://do5cddj67pykp" path="res://components/shadow.tscn" id="7_4civo"]
-[ext_resource type="Script" path="res://combat/hitbox_component.gd" id="7_r72xt"]
-[ext_resource type="PackedScene" uid="uid://dp2d5yhhoypry" path="res://components/random_stream_player.tscn" id="10_3lln8"]
-[ext_resource type="AudioStream" uid="uid://fp1ly6uvcdu6" path="res://assets/sfx/SWSH_Swing 3 Large 03_DDUMAIS_NONE.wav" id="11_m17r0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bp88g"]
 atlas = ExtResource("4_bgss3")
@@ -60,7 +57,7 @@ region = Rect2(256, 0, 64, 64)
 atlas = ExtResource("4_7s8c0")
 region = Rect2(320, 0, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_d1axd"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_r7481"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -109,9 +106,6 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1yl4m"]
-size = Vector2(7, 24)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xnycn"]
 radius = 7.0
 
@@ -123,10 +117,22 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/WeaponVisuals:rotation")
+tracks/0/path = NodePath("Visuals/WeaponVisuals:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/WeaponVisuals:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -137,81 +143,77 @@ tracks/0/keys = {
 resource_name = "death"
 length = 0.25
 step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/WeaponVisuals:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/WeaponVisuals:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 20)]
+}
 
 [sub_resource type="Animation" id="Animation_7o5rl"]
 resource_name = "run"
 length = 0.5
 loop_mode = 1
 step = 0.05
-
-[sub_resource type="Animation" id="Animation_djhow"]
-resource_name = "spin"
-loop_mode = 1
-tracks/0/type = "method"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RandomStreamPlayer")
-tracks/0/interp = 1
+tracks/0/path = NodePath("Visuals/WeaponVisuals:position")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"play_random"
-}]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/WeaponVisuals:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 6.28319]
+"values": [Vector2(0, 1), Vector2(0, -1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mgauv"]
 _data = {
 "RESET": SubResource("Animation_1fujb"),
 "death": SubResource("Animation_jbtpn"),
-"run": SubResource("Animation_7o5rl"),
-"spin": SubResource("Animation_djhow")
+"run": SubResource("Animation_7o5rl")
 }
 
 [node name="knight" instance=ExtResource("1_6y1gp")]
 script = ExtResource("2_jr5tl")
 
+[node name="Visuals" type="Node2D" parent="." index="0"]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals" index="0"]
 position = Vector2(-1, -20)
-sprite_frames = SubResource("SpriteFrames_d1axd")
+sprite_frames = SubResource("SpriteFrames_r7481")
 autoplay = "default"
+frame_progress = 0.99548
 
 [node name="WeaponVisuals" type="Node2D" parent="Visuals" index="1"]
 
 [node name="Weapon" type="Sprite2D" parent="Visuals/WeaponVisuals" index="0"]
-position = Vector2(-28, -2)
-rotation = -1.5708
+position = Vector2(-11, -16)
 texture = ExtResource("5_jpqd4")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 48)
 
-[node name="HitboxComponent" type="Area2D" parent="Visuals/WeaponVisuals/Weapon" index="0"]
-position = Vector2(-1, -5)
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("7_r72xt")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/WeaponVisuals/Weapon/HitboxComponent" index="0"]
-position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_1yl4m")
-
 [node name="Hand" type="Sprite2D" parent="Visuals/WeaponVisuals" index="1"]
-position = Vector2(-13, -2)
-rotation = -1.5708
+position = Vector2(-11, -1)
 texture = ExtResource("6_gp4ox")
 region_enabled = true
 region_rect = Rect2(0, 16, 16, 16)
@@ -230,7 +232,7 @@ max_health = 30.0
 
 [node name="ItemDropComponent" parent="." index="4"]
 drop_percent = 0.5
-item_scenes = Array[PackedScene]([ExtResource("2_3emie"), ExtResource("2_3emie"), ExtResource("2_3emie"), ExtResource("2_3emie"), ExtResource("2_3emie"), ExtResource("2_3emie")])
+item_scenes = Array[PackedScene]([ExtResource("2_3emie"), ExtResource("2_3emie"), ExtResource("2_3emie"), ExtResource("2_3emie")])
 
 [node name="Sprite2D" parent="." index="5"]
 visible = false
@@ -243,10 +245,4 @@ shape = SubResource("CapsuleShape2D_ivqyp")
 libraries = {
 "": SubResource("AnimationLibrary_mgauv")
 }
-autoplay = "spin"
-
-[node name="RandomStreamPlayer" parent="." index="9" instance=ExtResource("10_3lln8")]
-pitch_scale = 0.63
-max_distance = 500.0
-bus = &"sfx"
-streams = Array[AudioStream]([ExtResource("11_m17r0")])
+autoplay = "run"

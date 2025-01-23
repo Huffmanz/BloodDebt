@@ -23,7 +23,8 @@ func reduce_health(amount: float):
 	
 func heal(heal_amount: float):
 	max_health += heal_amount
-	current_health = clamp(current_health+heal_amount, 0, max_health)
+	#current_health = clamp(current_health+heal_amount, 0, max_health)
+	current_health = current_health+heal_amount
 	health_changed.emit()
 	
 func get_health_percent():
