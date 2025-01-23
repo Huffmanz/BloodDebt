@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 @onready var velocity_component: VelocityComponent = $VelocityComponent
-@onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var delete_timer: Timer = $DeleteTimer
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready():
 	hitbox_component.area_entered.connect(on_area_entered)
@@ -18,7 +18,7 @@ func on_area_entered(other_area:Node2D):
 	if not other_area is HurtboxComponent:
 		return 
 	set_physics_process(false)
-	sprite_2d.visible = false
+	animated_sprite_2d.visible = false
 	queue_free()
 	
 func on_body_entered(other_body):

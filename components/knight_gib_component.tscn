@@ -1,0 +1,13 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2me2suxy7ckk"]
+
+[ext_resource type="PackedScene" uid="uid://bbcpcxppiwla" path="res://components/gib_component.tscn" id="1_b7cc0"]
+[ext_resource type="PackedScene" uid="uid://cmi8cl87udr2g" path="res://components/gibs/bone_gib.tscn" id="2_uv0fe"]
+[ext_resource type="PackedScene" uid="uid://08ijqabft852" path="res://components/gibs/flesh_gib.tscn" id="3_m0w4p"]
+[ext_resource type="PackedScene" uid="uid://ckgsnbbiephfg" path="res://components/gibs/lung_gib.tscn" id="4_iwt8c"]
+[ext_resource type="PackedScene" uid="uid://t17swkuo2hv3" path="res://components/gibs/knight_head.tscn" id="5_1iqv5"]
+
+[node name="KnightGibComponent" instance=ExtResource("1_b7cc0")]
+gibs = Array[PackedScene]([ExtResource("2_uv0fe"), ExtResource("3_m0w4p"), ExtResource("4_iwt8c"), ExtResource("2_uv0fe"), ExtResource("3_m0w4p"), ExtResource("5_1iqv5")])
+
+[node name="CPUParticles2D" parent="." index="0"]
+initial_velocity_max = 110.0

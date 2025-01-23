@@ -1,0 +1,11 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckgsnbbiephfg"]
+
+[ext_resource type="PackedScene" uid="uid://bq0s45snm6ks4" path="res://components/gib.tscn" id="1_orqyt"]
+[ext_resource type="Texture2D" uid="uid://da8hnlk38nd6d" path="res://assets/gore/Lungs1.png" id="2_u8ksm"]
+[ext_resource type="Texture2D" uid="uid://beq0j5ols1biq" path="res://assets/gore/Lungs2.png" id="3_1oxnw"]
+[ext_resource type="Texture2D" uid="uid://cd0vseuahjjxv" path="res://assets/gore/Lungs3.png" id="4_1ilmo"]
+[ext_resource type="Texture2D" uid="uid://c3ycgeb57qmax" path="res://assets/gore/Lungs4.png" id="5_cpkfx"]
+[ext_resource type="Texture2D" uid="uid://bqb2rd6dejlmm" path="res://assets/gore/Lungs5.png" id="6_55knu"]
+
+[node name="LungGib" instance=ExtResource("1_orqyt")]
+texture = Array[Texture2D]([ExtResource("2_u8ksm"), ExtResource("3_1oxnw"), ExtResource("4_1ilmo"), ExtResource("5_cpkfx"), ExtResource("6_55knu")])

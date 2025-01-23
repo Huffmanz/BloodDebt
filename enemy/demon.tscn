@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhs7q2klj6dtq"]
+[gd_scene load_steps=13 format=3 uid="uid://bhs7q2klj6dtq"]
 
 [ext_resource type="Script" path="res://enemy/demon.gd" id="1_c26re"]
 [ext_resource type="Script" path="res://combat/hitbox_component.gd" id="2_3ldvj"]
+[ext_resource type="Texture2D" uid="uid://0p331f0feoqw" path="res://assets/sprite_sheet.png" id="3_llqp0"]
 
 [sub_resource type="Gradient" id="Gradient_i3ei3"]
 
@@ -11,11 +12,47 @@ width = 32
 height = 32
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ga1v"]
-radius = 12.0
-height = 34.0
+radius = 20.0
+height = 62.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xqi74"]
 size = Vector2(10000, 10000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tce4c"]
+atlas = ExtResource("3_llqp0")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sfrb"]
+atlas = ExtResource("3_llqp0")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ee080"]
+atlas = ExtResource("3_llqp0")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7lxl"]
+atlas = ExtResource("3_llqp0")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c4j5j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tce4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sfrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee080")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7lxl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Demon" type="CharacterBody2D"]
 script = ExtResource("1_c26re")
@@ -36,9 +73,11 @@ fit_content = true
 autowrap_mode = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = SubResource("GradientTexture2D_76ckg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_2ga1v")
 
 [node name="HitboxComponent" type="Area2D" parent="."]
@@ -50,3 +89,9 @@ damage = 25
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 visible = false
 shape = SubResource("RectangleShape2D_xqi74")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_c4j5j")
+autoplay = "default"
+frame_progress = 0.208461

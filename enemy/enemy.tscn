@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://combat/hitbox_component.gd" id="5_03rxt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jp4u5"]
-size = Vector2(16, 16)
+size = Vector2(14, 24)
 
 [sub_resource type="Gradient" id="Gradient_1hdem"]
 colors = PackedColorArray(0.41593, 0, 0.0219934, 1, 0.415686, 0, 0.0235294, 1)
@@ -31,8 +31,7 @@ script = ExtResource("1_f11ad")
 [node name="HealthComponent" parent="." instance=ExtResource("2_0f1q0")]
 max_health = 1.0
 
-[node name="ItemDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_p048s")]
-health_component = NodePath("../HealthComponent")
+[node name="ItemDropComponent" parent="." instance=ExtResource("4_p048s")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_jdy51")

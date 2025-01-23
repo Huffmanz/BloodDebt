@@ -1,18 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://csbfy5b34ecv5"]
+[gd_scene load_steps=5 format=3 uid="uid://csbfy5b34ecv5"]
 
 [ext_resource type="Script" path="res://items/blood_vial/blood_vial.gd" id="1_ldumt"]
+[ext_resource type="Texture2D" uid="uid://0p331f0feoqw" path="res://assets/sprite_sheet.png" id="2_q0l1f"]
 [ext_resource type="PackedScene" uid="uid://bucmp1fx2yrco" path="res://components/bounce_component.tscn" id="2_srgo7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u284k"]
 radius = 5.0
-
-[sub_resource type="Gradient" id="Gradient_1mg57"]
-colors = PackedColorArray(0.877136, 0, 0.292229, 1, 0.878431, 0, 0.294118, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_t0t14"]
-gradient = SubResource("Gradient_1mg57")
-width = 8
-height = 8
 
 [node name="BloodVial" type="Node2D"]
 script = ExtResource("1_ldumt")
@@ -27,7 +20,9 @@ monitorable = false
 shape = SubResource("CircleShape2D_u284k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_t0t14")
+texture = ExtResource("2_q0l1f")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
 
 [node name="BounceComponent" parent="." node_paths=PackedStringArray("host_node") instance=ExtResource("2_srgo7")]
 host_node = NodePath("../Sprite2D")

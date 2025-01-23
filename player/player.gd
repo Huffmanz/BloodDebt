@@ -9,6 +9,7 @@ const PLAYER_PROJECTILE = preload("res://combat/player_projectile.tscn")
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
 @onready var attack_timer: Timer = $attack_timer
 @onready var dash_timer: Timer = $DashingComponent/DashTimer
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var direction := Vector2.ZERO
 var can_shoot := true
@@ -39,7 +40,23 @@ func _physics_process(delta: float) -> void:
 		velocity = dashing_component.accelerate_in_direction(dash_direction)
 	else:
 		velocity = velocity_component.accelerate_in_direction(direction)
+	
+	if direction == Vector2.ZERO:
+		animated_sprite_2d.play("idle")
+	else:
+		animated_sprite_2d.play("run")
+	flip()
 	move_and_slide()
+
+func flip():
+	var move_sign = sign(direction.x)
+	if(move_sign != 0):
+		animated_sprite_2d.scale = Vector2(move_sign, 1)
+		
+	if move_sign == 0:
+		move_sign = sign((get_global_mouse_position() - global_position).x)
+		if(move_sign != 0):
+			animated_sprite_2d.scale = Vector2(move_sign, 1)
 
 func fire():
 	if !can_shoot:

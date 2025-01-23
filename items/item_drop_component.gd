@@ -1,16 +1,12 @@
+class_name  ItemDropComponent
 extends Node
 
 @export_range(0, 1) var drop_percent: float =  .5
-@export var health_component: HealthComponent
 @export var item_scenes: Array[PackedScene]
 
 signal item_spawn_complete
 
-func _ready() -> void:
-	health_component.died.connect(_on_died)
-
-
-func _on_died() -> void:
+func spawn_items() -> void:
 	var adjusted_drop_percent = drop_percent
 	#var experience_gain_upgrade_count = MetaProgression.get_upgrade_count("experience_gain")
 	#if experience_gain_upgrade_count > 0:

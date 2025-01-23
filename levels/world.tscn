@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://k0b7bq4x6osb" path="res://player/player.tscn" id="1_yb148"]
 [ext_resource type="PackedScene" uid="uid://sbpofqbqkvxd" path="res://ui/wave_time_ui.tscn" id="2_b67d3"]
 [ext_resource type="PackedScene" uid="uid://dx2xpus7nlxvw" path="res://managers/enemy_manager.tscn" id="3_0oc6b"]
-[ext_resource type="PackedScene" path="res://enemy/cursed_villager.tscn" id="4_7hdus"]
+[ext_resource type="PackedScene" uid="uid://dunw7oi01pqr7" path="res://enemy/knight.tscn" id="4_7hdus"]
 [ext_resource type="PackedScene" uid="uid://bhs7q2klj6dtq" path="res://enemy/demon.tscn" id="5_gc7j2"]
 [ext_resource type="PackedScene" uid="uid://biy2a0xfjo8ji" path="res://managers/demon_manager.tscn" id="6_envjh"]
 

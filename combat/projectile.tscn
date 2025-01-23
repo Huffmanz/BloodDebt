@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b07sdwdmbai0f"]
+[gd_scene load_steps=23 format=3 uid="uid://b07sdwdmbai0f"]
 
 [ext_resource type="Script" path="res://combat/hitbox_component.gd" id="1_eq3x5"]
 [ext_resource type="Script" path="res://combat/projectile.gd" id="1_k8ttn"]
 [ext_resource type="PackedScene" uid="uid://bmqxntns8k615" path="res://movement/velocity_component.tscn" id="2_mawv0"]
+[ext_resource type="Texture2D" uid="uid://tlivnrpdkdi8" path="res://assets/Projectile.png" id="4_orfa2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ic065"]
 radius = 4.0
@@ -10,13 +11,118 @@ radius = 4.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_r1p78"]
 radius = 4.0
 
-[sub_resource type="Gradient" id="Gradient_gh60e"]
-colors = PackedColorArray(0.551887, 0, 0.154044, 1, 0.552941, 0, 0.152941, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsh2g"]
+atlas = ExtResource("4_orfa2")
+region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_h8kav"]
-gradient = SubResource("Gradient_gh60e")
-width = 8
-height = 8
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlekb"]
+atlas = ExtResource("4_orfa2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqpgo"]
+atlas = ExtResource("4_orfa2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_164np"]
+atlas = ExtResource("4_orfa2")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77lbv"]
+atlas = ExtResource("4_orfa2")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53jbl"]
+atlas = ExtResource("4_orfa2")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_en25x"]
+atlas = ExtResource("4_orfa2")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drnx0"]
+atlas = ExtResource("4_orfa2")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou4ht"]
+atlas = ExtResource("4_orfa2")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_co1ns"]
+atlas = ExtResource("4_orfa2")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6v64s"]
+atlas = ExtResource("4_orfa2")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dnvk"]
+atlas = ExtResource("4_orfa2")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shcct"]
+atlas = ExtResource("4_orfa2")
+region = Rect2(192, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys4lg"]
+atlas = ExtResource("4_orfa2")
+region = Rect2(208, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11cbt"]
+atlas = ExtResource("4_orfa2")
+region = Rect2(224, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cbxdm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rsh2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlekb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqpgo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_164np")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77lbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53jbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_en25x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drnx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou4ht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_co1ns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6v64s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dnvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shcct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ys4lg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11cbt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="Projectile" type="CharacterBody2D"]
 collision_layer = 0
@@ -38,8 +144,12 @@ shape = SubResource("CircleShape2D_ic065")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_r1p78")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_h8kav")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-11, 0)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_cbxdm")
+autoplay = "default"
+frame_progress = 0.414316
 
 [node name="DeleteTimer" type="Timer" parent="."]
 wait_time = 5.0

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://t17swkuo2hv3"]
+
+[ext_resource type="PackedScene" uid="uid://bq0s45snm6ks4" path="res://components/gib.tscn" id="1_04hn1"]
+[ext_resource type="Texture2D" uid="uid://0p331f0feoqw" path="res://assets/sprite_sheet.png" id="2_un040"]
+
+[node name="KnightHead" instance=ExtResource("1_04hn1")]
+texture = Array[Texture2D]([ExtResource("2_un040")])
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(1, 1)
+texture = ExtResource("2_un040")
+region_enabled = true
+region_rect = Rect2(0, 208, 16, 16)

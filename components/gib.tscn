@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bq0s45snm6ks4"]
+
+[ext_resource type="Script" path="res://components/bounce_component.gd" id="1_5o7xb"]
+[ext_resource type="Script" path="res://components/gib.gd" id="1_xk484"]
+[ext_resource type="Texture2D" uid="uid://da8hnlk38nd6d" path="res://assets/gore/Lungs1.png" id="2_ah50u"]
+[ext_resource type="Texture2D" uid="uid://70kpkk7mbg7h" path="res://assets/gore/Flesh1.png" id="2_tipk4"]
+[ext_resource type="Texture2D" uid="uid://dgkimua4kv5tu" path="res://assets/gore/blood_Drop.png" id="4_ap1y3"]
+
+[sub_resource type="Curve" id="Curve_w2xdm"]
+_data = [Vector2(0, 0.995416), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Gib" type="Node2D"]
+script = ExtResource("1_xk484")
+texture = Array[Texture2D]([ExtResource("2_ah50u")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_tipk4")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Sprite2D"]
+z_index = 1
+scale = Vector2(2, 2)
+amount = 25
+lifetime = 0.25
+texture = ExtResource("4_ap1y3")
+direction = Vector2(0, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_w2xdm")
+color = Color(0.666667, 0, 0.164706, 1)
+
+[node name="ParticleTimer" type="Timer" parent="Sprite2D/CPUParticles2D"]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="BounceComponent" type="Node" parent="." node_paths=PackedStringArray("host_node")]
+script = ExtResource("1_5o7xb")
+host_node = NodePath("../Sprite2D")
+start_at_top = false
+rotate = true
