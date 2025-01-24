@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dh4g5lvct4ome"]
+[gd_scene load_steps=12 format=3 uid="uid://dh4g5lvct4ome"]
 
 [ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="1_jcdjx"]
 [ext_resource type="PackedScene" uid="uid://df6l8uwqvwnk7" path="res://managers/wave_time_manager.tscn" id="1_ue0gm"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c57pm8gbu44vx" path="res://ui/blood_hud.tscn" id="3_8gti7"]
 [ext_resource type="PackedScene" uid="uid://bhs7q2klj6dtq" path="res://enemy/demon.tscn" id="5_gc7j2"]
 [ext_resource type="PackedScene" uid="uid://biy2a0xfjo8ji" path="res://managers/demon_manager.tscn" id="6_envjh"]
+[ext_resource type="PackedScene" uid="uid://eenw3pn06tb4" path="res://enemy/wizard.tscn" id="9_i2m3u"]
 [ext_resource type="AudioStream" uid="uid://kckffwfnxa20" path="res://assets/sfx/music/universfield__tense-music-for-tense-scenes.mp3" id="10_arjgw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7rwuf"]
@@ -48,6 +49,9 @@ position = Vector2(321, 180)
 
 [node name="Demon" parent="entities" instance=ExtResource("5_gc7j2")]
 position = Vector2(321, 130)
+
+[node name="Wizard" parent="entities" instance=ExtResource("9_i2m3u")]
+position = Vector2(246, 183)
 
 [node name="foreground" type="Node2D" parent="." groups=["foreground_layer"]]
 

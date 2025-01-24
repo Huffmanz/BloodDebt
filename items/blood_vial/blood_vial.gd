@@ -23,8 +23,14 @@ func _physics_process(delta):
 	if direction != Vector2.ZERO:
 		global_position += direction * delta
 	if wave_complete && start_collect:
+		var player = get_tree().get_first_node_in_group("player")
+		if player == null:
+			return
+		
 		start_collect = false
-		start_collect_tween(1.5)
+		var distance = global_position.distance_to(player.global_position)
+		var duration = min(abs((distance * 0.005)),2)
+		start_collect_tween(duration)
 		
 func _wave_complete(amount: int):
 	wave_complete = true
