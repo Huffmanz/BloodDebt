@@ -36,6 +36,7 @@ func _process(delta):
 		fire_rate_timer.stop()
 		return
 	state.call(delta)
+	flip()
 
 func fire_state(delta):
 	if state_init:
@@ -88,3 +89,14 @@ func get_move_location():
 			random_direction = random_direction.rotated(deg_to_rad(90))
 			
 	return move_location
+	
+func flip():
+	var player  = get_tree().get_first_node_in_group("player") as Node2D
+	var move_sign = sign((global_position.direction_to(player.global_position)).x)
+	if(move_sign != 0):
+		visuals.scale = Vector2(move_sign, 1)
+		
+	if move_sign == 0:
+		move_sign = sign((get_global_mouse_position() - global_position).x)
+		if(move_sign != 0):
+			visuals.scale = Vector2(move_sign, 1)
