@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://sbpofqbqkvxd" path="res://ui/wave_time_ui.tscn" id="2_b67d3"]
 [ext_resource type="PackedScene" uid="uid://dx2xpus7nlxvw" path="res://managers/enemy_manager.tscn" id="3_0oc6b"]
 [ext_resource type="PackedScene" uid="uid://c57pm8gbu44vx" path="res://ui/blood_hud.tscn" id="3_8gti7"]
-[ext_resource type="PackedScene" uid="uid://dunw7oi01pqr7" path="res://enemy/knight.tscn" id="4_7hdus"]
 [ext_resource type="PackedScene" uid="uid://bhs7q2klj6dtq" path="res://enemy/demon.tscn" id="5_gc7j2"]
 [ext_resource type="PackedScene" uid="uid://biy2a0xfjo8ji" path="res://managers/demon_manager.tscn" id="6_envjh"]
+[ext_resource type="PackedScene" uid="uid://eenw3pn06tb4" path="res://enemy/wizard.tscn" id="9_i2m3u"]
 [ext_resource type="AudioStream" uid="uid://kckffwfnxa20" path="res://assets/sfx/music/universfield__tense-music-for-tense-scenes.mp3" id="10_arjgw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7rwuf"]
@@ -47,11 +47,11 @@ wave_timer_manager = NodePath("../WaveTimeManager")
 [node name="Player" parent="entities" instance=ExtResource("1_yb148")]
 position = Vector2(321, 180)
 
-[node name="cursed_villager" parent="entities" instance=ExtResource("4_7hdus")]
-position = Vector2(82, 100)
-
 [node name="Demon" parent="entities" instance=ExtResource("5_gc7j2")]
 position = Vector2(321, 130)
+
+[node name="Wizard" parent="entities" instance=ExtResource("9_i2m3u")]
+position = Vector2(224, 220)
 
 [node name="foreground" type="Node2D" parent="." groups=["foreground_layer"]]
 

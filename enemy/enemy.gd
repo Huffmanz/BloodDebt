@@ -7,9 +7,15 @@ extends CharacterBody2D
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 @onready var visuals: Node2D = $Visuals
+
 var dead := false
+var gib_component = preload("res://components/gib_component/knight_gib_component.tscn")
+
+func _init() -> void:
+	pass
 
 func _ready():
+	_init()
 	health_component.died.connect(_died)
 	item_drop_component.item_spawn_complete.connect(_items_spawned)
 	
@@ -19,6 +25,17 @@ func _died():
 	hurtbox_component.queue_free()
 	hitbox_component.queue_free()
 	velocity_component.max_speed = 0
+	
+	var gib_instance = gib_component.instantiate()
+	gib_instance.global_position = global_position
+	get_tree().current_scene.add_child(gib_instance)
+	
+	visuals.queue_free()
+	item_drop_component.spawn_items()
+	GameEvents.camera_shake
+	GameEvents.frameFreeze(0.1, 0.3)
+	GameEvents.emit_camera_shake(5)
+
 	
 	#queue_free()
 	

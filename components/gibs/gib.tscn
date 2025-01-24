@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bq0s45snm6ks4"]
 
 [ext_resource type="Script" path="res://components/bounce_component.gd" id="1_5o7xb"]
-[ext_resource type="Script" path="res://components/gib.gd" id="1_xk484"]
+[ext_resource type="Script" path="res://components/gibs/gib.gd" id="1_xk484"]
 [ext_resource type="Texture2D" uid="uid://da8hnlk38nd6d" path="res://assets/gore/Lungs1.png" id="2_ah50u"]
 [ext_resource type="Texture2D" uid="uid://70kpkk7mbg7h" path="res://assets/gore/Flesh1.png" id="2_tipk4"]
 [ext_resource type="Texture2D" uid="uid://dgkimua4kv5tu" path="res://assets/gore/blood_Drop.png" id="4_ap1y3"]

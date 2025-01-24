@@ -6,6 +6,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	GameEvents.wave_started.connect(_wave_started)
+	GameEvents.wave_complete.connect(_wave_complete)
 
 func _process(delta):
 	if wave_time_manager == null:
@@ -20,4 +21,8 @@ func format_seconds_to_string(seconds: float):
 	return str(minutes) + ":" + ("%02d" % floor(remaining_seconds))
 	
 func _wave_started(wave_number:int):
+	visible = true
 	wave_number_label.text = str(wave_number)
+
+func _wave_complete(wave_number: int):
+	visible = false

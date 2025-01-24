@@ -58,10 +58,9 @@ animations = [{
 script = ExtResource("1_c26re")
 
 [node name="Speech" type="Node2D" parent="."]
-position = Vector2(4, -26)
+position = Vector2(4, -33)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Speech"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -19,3 +19,4 @@ func disable():
 	hitbox_component.monitorable = false
 	hitbox_component.monitoring = false
 	collision_shape_2d.disabled = true
+	

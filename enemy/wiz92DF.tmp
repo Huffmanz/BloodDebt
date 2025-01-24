@@ -1,0 +1,104 @@
+[gd_scene load_steps=13 format=3 uid="uid://eenw3pn06tb4"]
+
+[ext_resource type="PackedScene" uid="uid://cxy2wkr77qtfl" path="res://enemy/enemy.tscn" id="1_67tjn"]
+[ext_resource type="Texture2D" uid="uid://b8jm7i2agipnc" path="res://assets/Pixel Crawler/Heroes/Wizzard/Run/Run-Sheet.png" id="2_pa46t"]
+[ext_resource type="Script" path="res://enemy/wizard.gd" id="2_x6xxa"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2j27i"]
+load_path = "res://.godot/imported/Wood.png-290c1b2731778e0c6a16dd4841f9516d.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vqx8u"]
+load_path = "res://.godot/imported/Hands.png-38a2e27d92b3940414d8ddc17b5ed25f.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8slc"]
+atlas = ExtResource("2_pa46t")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps3ye"]
+atlas = ExtResource("2_pa46t")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oj6oj"]
+atlas = ExtResource("2_pa46t")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d74u6"]
+atlas = ExtResource("2_pa46t")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8vp1"]
+atlas = ExtResource("2_pa46t")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f14vi"]
+atlas = ExtResource("2_pa46t")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fnc0y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8slc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ps3ye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oj6oj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d74u6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8vp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f14vi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Wizard" instance=ExtResource("1_67tjn")]
+script = ExtResource("2_x6xxa")
+
+[node name="WeaponVisuals" type="Node2D" parent="Visuals" index="0"]
+position = Vector2(10, 2)
+
+[node name="Weapon" type="Sprite2D" parent="Visuals/WeaponVisuals" index="0"]
+rotation = -1.5708
+texture = SubResource("CompressedTexture2D_2j27i")
+region_enabled = true
+region_rect = Rect2(80, 0, 32, 16)
+
+[node name="Hand" type="Sprite2D" parent="Visuals/WeaponVisuals" index="1"]
+rotation = -1.5708
+texture = SubResource("CompressedTexture2D_vqx8u")
+region_enabled = true
+region_rect = Rect2(0, 16, 16, 16)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals" index="1"]
+position = Vector2(0, -15)
+sprite_frames = SubResource("SpriteFrames_fnc0y")
+autoplay = "default"
+frame_progress = 0.505451
+
+[node name="HealthComponent" parent="." index="3"]
+max_health = 20.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+
+[node name="StateTimer" type="Timer" parent="." index="8"]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="FireRateTimer" type="Timer" parent="." index="9"]
+wait_time = 0.4
+one_shot = true
+autostart = true
+
+[node name="WeaponPivot" type="Marker2D" parent="." index="10"]
+
+[node name="Muzzle" type="Marker2D" parent="WeaponPivot" index="0"]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=7 format=3 uid="uid://5o5f7v5ah77r"]
+
+[ext_resource type="PackedScene" uid="uid://bbcpcxppiwla" path="res://components/gib_component/gib_component.tscn" id="1_n4tei"]
+[ext_resource type="PackedScene" uid="uid://cmi8cl87udr2g" path="res://components/gibs/bone_gib.tscn" id="2_yhkyq"]
+[ext_resource type="PackedScene" uid="uid://08ijqabft852" path="res://components/gibs/flesh_gib.tscn" id="3_7xf57"]
+[ext_resource type="PackedScene" uid="uid://ckgsnbbiephfg" path="res://components/gibs/lung_gib.tscn" id="4_ixcr4"]
+[ext_resource type="PackedScene" uid="uid://bjh2h3o4drovq" path="res://components/gibs/wizard_head.tscn" id="5_sbppg"]
+[ext_resource type="PackedScene" uid="uid://d7bq6hptmgpx" path="res://components/gibs/wizard_hat.tscn" id="6_3fcog"]
+
+[node name="WizardGibComponent" instance=ExtResource("1_n4tei")]
+gibs = Array[PackedScene]([ExtResource("2_yhkyq"), ExtResource("3_7xf57"), ExtResource("4_ixcr4"), ExtResource("2_yhkyq"), ExtResource("3_7xf57"), ExtResource("5_sbppg"), ExtResource("6_3fcog")])

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bbcpcxppiwla"]
 
-[ext_resource type="Script" path="res://components/gib_component.gd" id="1_slj2s"]
+[ext_resource type="Script" path="res://components/gib_component/gib_component.gd" id="1_slj2s"]
 [ext_resource type="PackedScene" uid="uid://cmi8cl87udr2g" path="res://components/gibs/bone_gib.tscn" id="2_u0n7l"]
 [ext_resource type="PackedScene" uid="uid://08ijqabft852" path="res://components/gibs/flesh_gib.tscn" id="3_7p7mt"]
 [ext_resource type="Texture2D" uid="uid://dgkimua4kv5tu" path="res://assets/gore/blood_Drop.png" id="5_73lcp"]
