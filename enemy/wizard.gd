@@ -62,6 +62,8 @@ func move_state(delta):
 		disappear_tween.finished.connect(reappear)
 
 func reappear() -> void:
+	if dead:
+		return
 	global_position = move_location
 	if reappear_tween:
 		reappear_tween.kill()

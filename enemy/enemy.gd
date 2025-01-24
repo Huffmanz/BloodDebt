@@ -36,9 +36,6 @@ func _died():
 	GameEvents.frameFreeze(0.1, 0.3)
 	GameEvents.emit_camera_shake(5)
 
-	
-	#queue_free()
-	
 func _items_spawned():
 	queue_free()
 	
