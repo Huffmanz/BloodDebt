@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bdvqaoavceyjx"
+path="res://.godot/imported/Impact 3.mp3-f53e05abc49b418b644f770d179a06ea.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/impact/Impact 3.mp3"
+dest_files=["res://.godot/imported/Impact 3.mp3-f53e05abc49b418b644f770d179a06ea.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

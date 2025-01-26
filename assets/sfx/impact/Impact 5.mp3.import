@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dukskkisstj2s"
+path="res://.godot/imported/Impact 5.mp3-d3a90f22b236c751ba7c8e973ea1a3d3.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/impact/Impact 5.mp3"
+dest_files=["res://.godot/imported/Impact 5.mp3-d3a90f22b236c751ba7c8e973ea1a3d3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

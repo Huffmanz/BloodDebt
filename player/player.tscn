@@ -200,6 +200,7 @@ one_shot = true
 one_shot = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_sa1f4")]
+max_health = 100.0
 
 [node name="HealthRegenComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_jp21s")]
 health_component = NodePath("../HealthComponent")

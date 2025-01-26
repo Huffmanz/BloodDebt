@@ -29,6 +29,7 @@ func get_state_init():
 	
 func _init() -> void:
 	gib_component = wizard_gib_component
+	state = STATE_OPTIONS.pick_random()
 
 func _process(delta):
 	if dead:

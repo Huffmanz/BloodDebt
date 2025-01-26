@@ -48,3 +48,4 @@ func flip():
 		move_sign = sign((get_global_mouse_position() - global_position).x)
 		if(move_sign != 0):
 			visuals.scale = Vector2(move_sign, 1)
+			

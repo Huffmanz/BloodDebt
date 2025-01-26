@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var impact_stream_player: AudioStreamPlayer2D = $ImpactStreamPlayer
 @onready var shoot_stream_player: AudioStreamPlayer2D = $ShootStreamPlayer
+@onready var environment_impact_player: AudioStreamPlayer2D = $EnvironmentImpactPlayer
 
 func _ready():
 	hitbox_component.area_entered.connect(on_area_entered)
@@ -18,14 +19,17 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func on_area_entered(other_area:Node2D):
-	if not other_area is HurtboxComponent:
-		return 
 	set_physics_process(false)
 	animated_sprite_2d.visible = false
-	impact_stream_player.play_random()
 	animated_sprite_2d.visible = false
-	await impact_stream_player.finished
-	queue_free()
+	if not other_area is HurtboxComponent:
+		environment_impact_player.play_random()
+		await environment_impact_player.finished
+		queue_free()
+	else:
+		impact_stream_player.play_random()
+		await impact_stream_player.finished
+		queue_free()
 	
 func on_body_entered(other_body):
 	queue_free()

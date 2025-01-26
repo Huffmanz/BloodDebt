@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://w8vl1kr5uvwt"
+path="res://.godot/imported/Mana Potion 1.mp3-95a82328df550b0e959a1d3135368e3f.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/Mana Potion 1.mp3"
+dest_files=["res://.godot/imported/Mana Potion 1.mp3-95a82328df550b0e959a1d3135368e3f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

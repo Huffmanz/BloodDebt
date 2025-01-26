@@ -77,6 +77,9 @@ max_health = 20.0
 [node name="ItemDropComponent" parent="." index="4"]
 item_scenes = Array[PackedScene]([ExtResource("4_ikfn6"), ExtResource("4_ikfn6"), ExtResource("4_ikfn6"), ExtResource("4_ikfn6")])
 
+[node name="HitboxComponent" parent="." index="6"]
+collision_layer = 0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
 
 [node name="StateTimer" type="Timer" parent="." index="8"]
