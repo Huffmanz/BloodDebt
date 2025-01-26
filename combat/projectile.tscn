@@ -7,13 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://dp2d5yhhoypry" path="res://components/random_stream_player.tscn" id="5_qa1m2"]
 [ext_resource type="AudioStream" uid="uid://c0xm7ghu5vwi7" path="res://assets/sfx/322171__liamg_sfx__axe-impact-gore.wav" id="6_6gxxe"]
 [ext_resource type="AudioStream" uid="uid://bohf75xr5xapc" path="res://assets/sfx/546824__eminyildirim__fire-magic-whoosh.wav" id="7_36q7l"]
-[ext_resource type="AudioStream" uid="uid://dlbb2wmuen2qc" path="res://assets/sfx/impact/Impact 1.mp3" id="8_ud580"]
-[ext_resource type="AudioStream" uid="uid://j3dfd7jo1pht" path="res://assets/sfx/impact/Impact 2.mp3" id="9_aw4bw"]
-[ext_resource type="AudioStream" uid="uid://bdvqaoavceyjx" path="res://assets/sfx/impact/Impact 3.mp3" id="10_lcxqy"]
-[ext_resource type="AudioStream" uid="uid://baaxhbld4v5bn" path="res://assets/sfx/impact/Impact 4.mp3" id="11_1ppbx"]
-[ext_resource type="AudioStream" uid="uid://dukskkisstj2s" path="res://assets/sfx/impact/Impact 5.mp3" id="12_rdciy"]
-[ext_resource type="AudioStream" uid="uid://bc42xvx5puo1f" path="res://assets/sfx/impact/Impact 6.mp3" id="13_xc1um"]
-[ext_resource type="AudioStream" uid="uid://cpcydadop8x3e" path="res://assets/sfx/impact/Impact 7.mp3" id="14_fr6b4"]
+[ext_resource type="AudioStream" uid="uid://3tsfsh1kaimt" path="res://assets/sfx/impact/Impact 1.ogg" id="8_1ej70"]
+[ext_resource type="AudioStream" uid="uid://ddjkgvufc3dkc" path="res://assets/sfx/impact/Impact 2.ogg" id="9_xwsbp"]
+[ext_resource type="AudioStream" uid="uid://cnfa47ja1qu3p" path="res://assets/sfx/impact/Impact 3.ogg" id="10_2c2so"]
+[ext_resource type="AudioStream" uid="uid://diug7lifwfx40" path="res://assets/sfx/impact/Impact 4.ogg" id="11_xpnet"]
+[ext_resource type="AudioStream" uid="uid://coah85l7j8a3g" path="res://assets/sfx/impact/Impact 5.ogg" id="12_pjs27"]
+[ext_resource type="AudioStream" uid="uid://b820ktmaa1vv1" path="res://assets/sfx/impact/Impact 6.ogg" id="13_fxj0e"]
+[ext_resource type="AudioStream" uid="uid://cch8nphngprtg" path="res://assets/sfx/impact/Impact 7.ogg" id="14_qgy8a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ic065"]
 radius = 4.0
@@ -176,4 +176,4 @@ streams = Array[AudioStream]([ExtResource("7_36q7l")])
 
 [node name="EnvironmentImpactPlayer" parent="." instance=ExtResource("5_qa1m2")]
 bus = &"sfx"
-streams = Array[AudioStream]([ExtResource("8_ud580"), ExtResource("9_aw4bw"), ExtResource("10_lcxqy"), ExtResource("11_1ppbx"), ExtResource("12_rdciy"), ExtResource("13_xc1um"), ExtResource("14_fr6b4")])
+streams = Array[AudioStream]([ExtResource("8_1ej70"), ExtResource("9_xwsbp"), ExtResource("10_2c2so"), ExtResource("11_xpnet"), ExtResource("12_pjs27"), ExtResource("13_fxj0e"), ExtResource("14_qgy8a")])

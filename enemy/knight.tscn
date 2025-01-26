@@ -290,7 +290,7 @@ position = Vector2(-1, -20)
 sprite_frames = SubResource("SpriteFrames_d1axd")
 animation = &"idle"
 autoplay = "default"
-frame_progress = 0.712725
+frame_progress = 0.490082
 
 [node name="WeaponVisuals" type="Node2D" parent="Visuals" index="1"]
 rotation = -1.88496

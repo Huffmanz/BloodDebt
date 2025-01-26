@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b820ktmaa1vv1"
+path="res://.godot/imported/Impact 6.ogg-b9e691b74d308e54e0271333d5c10e0f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/impact/Impact 6.ogg"
+dest_files=["res://.godot/imported/Impact 6.ogg-b9e691b74d308e54e0271333d5c10e0f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
