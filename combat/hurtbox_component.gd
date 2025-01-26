@@ -14,11 +14,10 @@ func on_area_entered(other_area:Area2D):
 		return
 		
 	if health_component == null:
-		return	
+		return
 		
 	var hitbox_component = other_area as HitboxComponent
 	health_component.damage(hitbox_component.damage)
-	#GameEvents.frameFreeze(0.1, 0.3)
 	GameEvents.create_negative_numbers(global_position + (Vector2.UP * 16), hitbox_component.damage)
 	hit.emit()
 	

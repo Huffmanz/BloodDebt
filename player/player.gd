@@ -11,12 +11,13 @@ const PLAYER_PROJECTILE = preload("res://combat/player_projectile.tscn")
 @onready var dash_timer: Timer = $DashingComponent/DashTimer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hurt_audio_player: AudioStreamPlayer2D = $HurtAudioPlayer
-
+@onready var dash_cooldown: Timer = $DashingComponent/DashCooldown
 
 
 var direction := Vector2.ZERO
 var can_shoot := true
 var dashing := false
+var can_dash := true
 var dash_direction:=Vector2.ZERO
 var spawn_position = Vector2.ZERO
 
@@ -27,6 +28,7 @@ func _ready() -> void:
 	GameEvents.player_blood_gained.connect(_player_blood_gained)
 	health_component.health_changed.connect(_player_health_changed)
 	dash_timer.timeout.connect(_dash_timeout)
+	dash_cooldown.timeout.connect(_dash_cooldown_timeout)
 	spawn_position = global_position
 	GameEvents.emit_player_health_updated(health_component.current_health)
 
@@ -35,8 +37,9 @@ func _physics_process(delta: float) -> void:
 	direction.y = Input.get_axis("move_up", "move_down")
 	if Input.is_action_pressed("left_mouse"):
 		fire()
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash") && can_dash:
 		dashing = true
+		can_dash = false
 		dash_timer.start()
 		dash_direction = direction
 		
@@ -91,6 +94,10 @@ func _player_health_changed():
 	
 func _dash_timeout():
 	dashing = false
+	dash_cooldown.start()
+	
+func _dash_cooldown_timeout():
+	can_dash = true
 	
 func reset_location():
 	global_position = spawn_position

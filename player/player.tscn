@@ -199,6 +199,9 @@ acceleration = 500.0
 wait_time = 0.25
 one_shot = true
 
+[node name="DashCooldown" type="Timer" parent="DashingComponent"]
+one_shot = true
+
 [node name="HealthComponent" parent="." instance=ExtResource("2_sa1f4")]
 max_health = 100.0
 
