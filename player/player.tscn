@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://k0b7bq4x6osb"]
+[gd_scene load_steps=36 format=3 uid="uid://k0b7bq4x6osb"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_v6xto"]
 [ext_resource type="PackedScene" uid="uid://bmqxntns8k615" path="res://movement/velocity_component.tscn" id="2_3dy3y"]
@@ -175,9 +175,6 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p1v08"]
-load_path = "res://.godot/imported/Idle-Sheet.png-faa29bd0dac92de5f4907bfc0c2f3784.ctex"
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_nw0u4"]
 radius = 34.0147
 
@@ -203,7 +200,6 @@ one_shot = true
 one_shot = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_sa1f4")]
-max_health = 100.0
 
 [node name="HealthRegenComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_jp21s")]
 health_component = NodePath("../HealthComponent")
@@ -215,12 +211,6 @@ autoplay = "idle"
 frame_progress = 0.0634733
 
 [node name="Shadow" parent="." instance=ExtResource("6_n21ws")]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-texture = SubResource("CompressedTexture2D_p1v08")
-region_enabled = true
-region_rect = Rect2(368, 416, 16, 32)
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_ycwor")]
 collision_layer = 0

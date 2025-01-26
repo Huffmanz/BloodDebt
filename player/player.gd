@@ -12,6 +12,7 @@ const PLAYER_PROJECTILE = preload("res://combat/player_projectile.tscn")
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hurt_audio_player: AudioStreamPlayer2D = $HurtAudioPlayer
 @onready var dash_cooldown: Timer = $DashingComponent/DashCooldown
+@onready var shadow: AnimatedSprite2D = $Shadow
 
 
 var direction := Vector2.ZERO
@@ -20,6 +21,7 @@ var dashing := false
 var can_dash := true
 var dash_direction:=Vector2.ZERO
 var spawn_position = Vector2.ZERO
+var dead := false
 
 func _ready() -> void:
 	health_component.died.connect(on_died)
@@ -33,15 +35,15 @@ func _ready() -> void:
 	GameEvents.emit_player_health_updated(health_component.current_health)
 
 func _physics_process(delta: float) -> void:
+	if dead:
+		return
+	
 	direction.x = Input.get_axis("move_left", "move_right")
 	direction.y = Input.get_axis("move_up", "move_down")
 	if Input.is_action_pressed("left_mouse"):
 		fire()
 	if Input.is_action_just_pressed("dash") && can_dash:
-		dashing = true
-		can_dash = false
-		dash_timer.start()
-		dash_direction = direction
+		dash()
 		
 	if dashing:
 		velocity = dashing_component.accelerate_in_direction(dash_direction)
@@ -54,6 +56,14 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.play("run")
 	flip()
 	move_and_slide()
+
+func dash():
+	dashing = true
+	can_dash = false
+	dash_timer.start()
+	dash_direction = direction
+	hurtbox_component.monitoring = false
+	hurtbox_component.monitorable = false
 
 func flip():
 	var move_sign = sign(direction.x)
@@ -93,6 +103,8 @@ func _player_health_changed():
 	GameEvents.emit_player_health_updated(health_component.current_health)
 	
 func _dash_timeout():
+	hurtbox_component.monitoring = true
+	hurtbox_component.monitorable = true
 	dashing = false
 	dash_cooldown.start()
 	
@@ -103,4 +115,7 @@ func reset_location():
 	global_position = spawn_position
 	
 func on_died():
-	print("DEAD")
+	dead = true
+	hurtbox_component.queue_free()
+	shadow.queue_free()
+	animated_sprite_2d.play("death")
