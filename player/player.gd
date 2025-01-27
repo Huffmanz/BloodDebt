@@ -14,7 +14,6 @@ const PLAYER_PROJECTILE = preload("res://combat/player_projectile.tscn")
 @onready var dash_cooldown: Timer = $DashingComponent/DashCooldown
 @onready var shadow: AnimatedSprite2D = $Shadow
 
-
 var direction := Vector2.ZERO
 var can_shoot := true
 var dashing := false
@@ -33,6 +32,9 @@ func _ready() -> void:
 	dash_cooldown.timeout.connect(_dash_cooldown_timeout)
 	spawn_position = global_position
 	GameEvents.emit_player_health_updated(health_component.current_health)
+	GameEvents.player_remove_blood.connect(_remove_blood)
+	GameEvents.blood_debt_effect_player_damage_taken.connect(_damage_taken_mult)
+	GameEvents.wave_complete.connect(_wave_complete)
 
 func _physics_process(delta: float) -> void:
 	if dead:
@@ -80,7 +82,7 @@ func fire():
 		return
 	var mouse_direction = get_global_mouse_position() - global_position
 	var projectile : CharacterBody2D = PLAYER_PROJECTILE.instantiate()
-	GameEvents.create_negative_numbers(global_position + (Vector2.UP * 16), 1)
+	Utils.create_negative_numbers(global_position + (Vector2.UP * 16), 1)
 	health_component.reduce_health(1)
 	get_tree().current_scene.add_child(projectile)
 	projectile.global_position = global_position
@@ -90,7 +92,7 @@ func fire():
 	
 func _hurtbox_hit():
 	hurt_audio_player.play_random()
-	GameEvents.frameFreeze(0.1, 0.3)
+	Utils.frameFreeze(0.1, 0.3)
 	GameEvents.emit_camera_shake(5)
 	
 func _attack_timer_timeout():
@@ -113,6 +115,15 @@ func _dash_cooldown_timeout():
 	
 func reset_location():
 	global_position = spawn_position
+	
+func _remove_blood(amount: int):
+	health_component.reduce_health(amount)
+	
+func _damage_taken_mult(amount: int):
+	hurtbox_component.multiplier = amount
+	
+func _wave_complete(wave_number: int):
+	hurtbox_component.multiplier = 1
 	
 func on_died():
 	dead = true

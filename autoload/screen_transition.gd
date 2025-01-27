@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal transitioned_halfway
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var skip_emit = false

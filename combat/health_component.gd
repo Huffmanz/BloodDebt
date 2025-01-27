@@ -3,7 +3,7 @@ class_name HealthComponent
 
 signal died
 signal health_changed
-signal health_decreased
+signal health_decreased(amount: int)
 
 @export var max_health: float = 10
 var current_health 
@@ -14,7 +14,7 @@ func _ready():
 func damage(damage_amount: float):
 	reduce_health(damage_amount)
 	if damage_amount > 0:
-		health_decreased.emit()
+		health_decreased.emit(damage_amount)
 		
 func reduce_health(amount: float):
 	current_health = clamp(current_health-amount, 0, max_health)

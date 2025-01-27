@@ -52,7 +52,7 @@ func tween_collect(percent: float, start_position: Vector2):
 	
 func collect():
 	collect_stream_player.play_random()
-	GameEvents.create_positive_numbers(global_position + (Vector2.UP * 16), 1)
+	Utils.create_positive_numbers(global_position + (Vector2.UP * 16), 1)
 	await collect_stream_player.finished
 	GameEvents.emit_player_blood_gained(1)
 	queue_free()

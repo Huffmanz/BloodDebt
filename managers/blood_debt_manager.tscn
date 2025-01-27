@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://biy2a0xfjo8ji"]
+
+[ext_resource type="Script" path="res://managers/blood_debt_manager.gd" id="1_i83b5"]
+[ext_resource type="Script" path="res://resources/blood_debt/blood_debt_upgrade.gd" id="2_heofy"]
+[ext_resource type="PackedScene" uid="uid://buinv3lliy3sv" path="res://ui/blood_debt/blood_debt_menu.tscn" id="2_tho4f"]
+[ext_resource type="Resource" uid="uid://cg566rva7u2mr" path="res://resources/blood_debt/borrowed_time.tres" id="3_il6a4"]
+[ext_resource type="Resource" uid="uid://b7guqg76iutwl" path="res://resources/blood_debt/curse_of_aggression.tres" id="4_c20ng"]
+[ext_resource type="Resource" uid="uid://bbmyfm3quht1l" path="res://resources/blood_debt/swarms_call.tres" id="5_drtnf"]
+
+[node name="BloodDebtManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_i83b5")
+blood_debt_upgrades = Array[ExtResource("2_heofy")]([ExtResource("3_il6a4"), ExtResource("4_c20ng"), ExtResource("5_drtnf")])
+blood_debt_menu = ExtResource("2_tho4f")
+starting_blood_debt = 10
+debt_growth_rate = 0.1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="WaveTextLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 24
+text = "Next Wave In"
+horizontal_alignment = 1
+
+[node name="WaveTimeLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 6
+text = "0:00"

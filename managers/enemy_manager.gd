@@ -10,6 +10,7 @@ const SPAWN_RADIUS = 350;
 var base_spawn_time = 0
 var enemy_table = WeightedTable.new()
 
+
 func _ready():
 	enemy_table.add_item(basic_enemy_scene, 10)
 	timer.timeout.connect(on_timer_timeout)
@@ -17,6 +18,7 @@ func _ready():
 	base_spawn_time = timer.wait_time
 	GameEvents.wave_complete.connect(_wave_complete)
 	GameEvents.wave_started.connect(_wave_started)
+
 	
 func _wave_complete(wave_number: int):
 	timer.stop()

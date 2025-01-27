@@ -33,7 +33,7 @@ func _died():
 	visuals.queue_free()
 	item_drop_component.spawn_items()
 	GameEvents.camera_shake
-	GameEvents.frameFreeze(0.1, 0.3)
+	Utils.frameFreeze(0.1, 0.3)
 	GameEvents.emit_camera_shake(5)
 
 func _items_spawned():

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dx2xpus7nlxvw" path="res://managers/enemy_manager.tscn" id="3_0oc6b"]
 [ext_resource type="PackedScene" uid="uid://c57pm8gbu44vx" path="res://ui/blood_hud.tscn" id="3_8gti7"]
 [ext_resource type="PackedScene" uid="uid://bhs7q2klj6dtq" path="res://enemy/demon.tscn" id="5_gc7j2"]
-[ext_resource type="PackedScene" uid="uid://biy2a0xfjo8ji" path="res://managers/demon_manager.tscn" id="6_envjh"]
+[ext_resource type="PackedScene" uid="uid://biy2a0xfjo8ji" path="res://managers/blood_debt_manager.tscn" id="6_envjh"]
 [ext_resource type="PackedScene" uid="uid://eenw3pn06tb4" path="res://enemy/wizard.tscn" id="9_i2m3u"]
 [ext_resource type="AudioStream" uid="uid://kckffwfnxa20" path="res://assets/sfx/music/universfield__tense-music-for-tense-scenes.mp3" id="10_arjgw"]
 
@@ -34,8 +34,7 @@ wave_time_manager = NodePath("../WaveTimeManager")
 
 [node name="BloodHud" parent="." instance=ExtResource("3_8gti7")]
 
-[node name="DemonManager" parent="." node_paths=PackedStringArray("demon") instance=ExtResource("6_envjh")]
-demon = NodePath("../entities/Demon")
+[node name="DemonManager" parent="." instance=ExtResource("6_envjh")]
 
 [node name="WaveTimeManager" parent="." instance=ExtResource("1_ue0gm")]
 

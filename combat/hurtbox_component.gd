@@ -4,6 +4,7 @@ class_name HurtboxComponent
 signal hit
 
 @export var health_component: HealthComponent
+@export var multiplier : int = 1
 var floating_text_scene = preload("res://ui/floating_text.tscn")
 
 func _ready():
@@ -17,8 +18,9 @@ func on_area_entered(other_area:Area2D):
 		return
 		
 	var hitbox_component = other_area as HitboxComponent
-	health_component.damage(hitbox_component.damage)
-	GameEvents.create_negative_numbers(global_position + (Vector2.UP * 16), hitbox_component.damage)
+	var damage = hitbox_component.damage * multiplier
+	health_component.damage(damage)
+	Utils.create_negative_numbers(global_position + (Vector2.UP * 16), damage)
 	hit.emit()
 	
 	

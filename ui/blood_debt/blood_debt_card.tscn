@@ -1,0 +1,283 @@
+[gd_scene load_steps=24 format=3 uid="uid://bj0yiievc88my"]
+
+[ext_resource type="Texture2D" uid="uid://dlq3th3t16272" path="res://assets/ui/ui.png" id="1_rddv0"]
+[ext_resource type="Script" path="res://ui/blood_debt/blood_debt_card.gd" id="1_s7r8j"]
+[ext_resource type="PackedScene" uid="uid://dp2d5yhhoypry" path="res://components/random_stream_player.tscn" id="2_ko6y7"]
+[ext_resource type="AudioStream" uid="uid://caktqoh402ptb" path="res://assets/sfx/ui/switch1.ogg" id="3_72avo"]
+[ext_resource type="AudioStream" uid="uid://bkc8wayhkrgs" path="res://assets/sfx/ui/switch2.ogg" id="4_7p5y3"]
+[ext_resource type="AudioStream" uid="uid://bwtdsl7ony6nm" path="res://assets/sfx/ui/switch3.ogg" id="5_b6lxi"]
+[ext_resource type="AudioStream" uid="uid://b6ie8xda7304y" path="res://assets/sfx/ui/switch4.ogg" id="6_w3r7a"]
+[ext_resource type="AudioStream" uid="uid://dolknlxuxwhbo" path="res://assets/sfx/ui/switch5.ogg" id="7_1jb1n"]
+[ext_resource type="AudioStream" uid="uid://c7jt3i0luxft4" path="res://assets/sfx/ui/switch6.ogg" id="8_u0ru2"]
+[ext_resource type="AudioStream" uid="uid://eggmr04546re" path="res://assets/sfx/ui/switch7.ogg" id="9_lpvw4"]
+[ext_resource type="AudioStream" uid="uid://djdebmev00102" path="res://assets/sfx/ui/switch8.ogg" id="10_gegc6"]
+[ext_resource type="AudioStream" uid="uid://by12d3sfj7ij0" path="res://assets/sfx/ui/switch9.ogg" id="11_f7kur"]
+[ext_resource type="AudioStream" uid="uid://eiams670fsfq" path="res://assets/sfx/ui/switch10.ogg" id="12_6641g"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5o7sp"]
+texture = ExtResource("1_rddv0")
+texture_margin_left = 6.0
+texture_margin_top = 7.0
+texture_margin_right = 6.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fbv1d"]
+texture = ExtResource("1_rddv0")
+texture_margin_left = 10.0
+texture_margin_top = 2.0
+texture_margin_right = 10.0
+texture_margin_bottom = 2.0
+region_rect = Rect2(18, 2, 12, 12)
+
+[sub_resource type="Animation" id="Animation_78m3g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_h2015"]
+resource_name = "discard"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6llud"]
+resource_name = "in"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xjwyi"]
+resource_name = "selected"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 2.92817, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.25, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.0872665, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ClickPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rlhrr"]
+_data = {
+"RESET": SubResource("Animation_78m3g"),
+"discard": SubResource("Animation_h2015"),
+"in": SubResource("Animation_6llud"),
+"selected": SubResource("Animation_xjwyi")
+}
+
+[sub_resource type="Animation" id="Animation_ol1kw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hlvos"]
+resource_name = "hover"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.00872665, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HoverPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cakwi"]
+_data = {
+"RESET": SubResource("Animation_ol1kw"),
+"hover": SubResource("Animation_hlvos")
+}
+
+[node name="BloodDebtCard" type="PanelContainer"]
+custom_minimum_size = Vector2(150, 150)
+offset_right = 166.0
+offset_bottom = 150.0
+pivot_offset = Vector2(75, 75)
+theme_override_styles/panel = SubResource("StyleBoxTexture_5o7sp")
+script = ExtResource("1_s7r8j")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_fbv1d")
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+text = "Borrowed Time"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Write some description here"
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rlhrr")
+}
+
+[node name="HoverAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cakwi")
+}
+
+[node name="HoverPlayer" parent="." instance=ExtResource("2_ko6y7")]
+streams = Array[AudioStream]([ExtResource("3_72avo"), ExtResource("4_7p5y3"), ExtResource("5_b6lxi"), ExtResource("6_w3r7a"), ExtResource("7_1jb1n"), ExtResource("8_u0ru2"), ExtResource("9_lpvw4"), ExtResource("10_gegc6"), ExtResource("11_f7kur"), ExtResource("12_6641g")])
+
+[node name="ClickPlayer" parent="." instance=ExtResource("2_ko6y7")]
+streams = Array[AudioStream]([ExtResource("3_72avo"), ExtResource("4_7p5y3"), ExtResource("5_b6lxi"), ExtResource("6_w3r7a"), ExtResource("7_1jb1n"), ExtResource("8_u0ru2"), ExtResource("9_lpvw4"), ExtResource("10_gegc6"), ExtResource("11_f7kur"), ExtResource("12_6641g")])

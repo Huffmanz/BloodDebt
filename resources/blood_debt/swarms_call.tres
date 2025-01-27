@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="BloodDebtUpgrade" load_steps=7 format=3 uid="uid://bbmyfm3quht1l"]
+
+[ext_resource type="Script" path="res://resources/effects/base_effect.gd" id="1_4dkj4"]
+[ext_resource type="Script" path="res://resources/effects/reduce_blood_debt_effect.gd" id="2_6hh5d"]
+[ext_resource type="Script" path="res://resources/effects/increase_enemy_spawn_rate.gd" id="3_04wq0"]
+[ext_resource type="Script" path="res://resources/blood_debt/blood_debt_upgrade.gd" id="4_uq8my"]
+
+[sub_resource type="Resource" id="Resource_bjf77"]
+script = ExtResource("2_6hh5d")
+amount = 0.7
+description = ""
+
+[sub_resource type="Resource" id="Resource_cyjrn"]
+script = ExtResource("3_04wq0")
+multiplier = 1.5
+description = ""
+
+[resource]
+script = ExtResource("4_uq8my")
+id = "swarms_call"
+name = "Swarm's Call"
+description = "Blood Debt reduced by 70%.  Increases enemy spawn rate by 50%"
+effects = Array[ExtResource("1_4dkj4")]([SubResource("Resource_bjf77"), SubResource("Resource_cyjrn")])
