@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dava0f4b01tnj"]
+
+[ext_resource type="Script" path="res://components/delete_on_wave_complete.gd" id="1_kwrks"]
+
+[node name="DeleteOnWaveComplete" type="Node"]
+script = ExtResource("1_kwrks")

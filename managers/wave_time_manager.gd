@@ -39,9 +39,5 @@ func get_time_elapsed():
 func on_timer_timeout():
 	ScreenTransition.transition()
 	await ScreenTransition.transitioned_halfway
-	#for enemy in get_tree().get_nodes_in_group("enemy"):
-	#	enemy.queue_free()
-	#(get_tree().get_first_node_in_group("player") as Player).reset_location()
 	spawn_multiplier = 1
 	GameEvents.wave_complete.emit(current_wave)
-	#MetaProgression.save()

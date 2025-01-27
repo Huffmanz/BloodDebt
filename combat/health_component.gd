@@ -9,7 +9,7 @@ signal health_decreased(amount: int)
 var current_health 
 
 func _ready():
-	current_health = max_health
+	current_health = max_health 
 
 func damage(damage_amount: float):
 	reduce_health(damage_amount)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxy2wkr77qtfl"]
+[gd_scene load_steps=9 format=3 uid="uid://cxy2wkr77qtfl"]
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_8lvpl"]
 [ext_resource type="Script" path="res://movement/velocity_component.gd" id="1_f11ad"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://combat/hurtbox_component.gd" id="3_nqemj"]
 [ext_resource type="PackedScene" uid="uid://b7ypim4t8ele4" path="res://items/item_drop_component.tscn" id="4_p048s"]
 [ext_resource type="Script" path="res://combat/hitbox_component.gd" id="5_03rxt"]
+[ext_resource type="PackedScene" uid="uid://dava0f4b01tnj" path="res://components/delete_on_wave_complete.tscn" id="7_kljp8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jp4u5"]
 size = Vector2(14, 24)
@@ -43,3 +44,5 @@ script = ExtResource("5_03rxt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_jp4u5")
+
+[node name="DeleteOnWaveComplete" parent="." instance=ExtResource("7_kljp8")]

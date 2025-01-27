@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://resources/effects/reduce_blood_debt_effect.gd" id="2_4goux"]
 [ext_resource type="Script" path="res://resources/effects/multiply_blood_debt_effect.gd" id="3_1nm33"]
 
-[sub_resource type="Resource" id="Resource_2lhhy"]
+[sub_resource type="Resource" id="Resource_ur0ok"]
 script = ExtResource("2_4goux")
 amount = 0.5
 description = ""
@@ -20,4 +20,4 @@ script = ExtResource("1_hm4po")
 id = "borrowed_time"
 name = "Borrowed Time"
 description = "Reduce the blood payment by 50%, by agreeing to a higher debt in the future."
-effects = Array[ExtResource("1_kuxgs")]([SubResource("Resource_2lhhy"), SubResource("Resource_eeh5m")])
+effects = Array[ExtResource("1_kuxgs")]([SubResource("Resource_ur0ok"), SubResource("Resource_eeh5m")])

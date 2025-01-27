@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b07sdwdmbai0f"]
+[gd_scene load_steps=34 format=3 uid="uid://b07sdwdmbai0f"]
 
 [ext_resource type="Script" path="res://combat/hitbox_component.gd" id="1_eq3x5"]
 [ext_resource type="Script" path="res://combat/projectile.gd" id="1_k8ttn"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://coah85l7j8a3g" path="res://assets/sfx/impact/Impact 5.ogg" id="12_pjs27"]
 [ext_resource type="AudioStream" uid="uid://b820ktmaa1vv1" path="res://assets/sfx/impact/Impact 6.ogg" id="13_fxj0e"]
 [ext_resource type="AudioStream" uid="uid://cch8nphngprtg" path="res://assets/sfx/impact/Impact 7.ogg" id="14_qgy8a"]
+[ext_resource type="PackedScene" uid="uid://dava0f4b01tnj" path="res://components/delete_on_wave_complete.tscn" id="15_x33rp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ic065"]
 radius = 4.0
@@ -177,3 +178,5 @@ streams = Array[AudioStream]([ExtResource("7_36q7l")])
 [node name="EnvironmentImpactPlayer" parent="." instance=ExtResource("5_qa1m2")]
 bus = &"sfx"
 streams = Array[AudioStream]([ExtResource("8_1ej70"), ExtResource("9_xwsbp"), ExtResource("10_2c2so"), ExtResource("11_xpnet"), ExtResource("12_pjs27"), ExtResource("13_fxj0e"), ExtResource("14_qgy8a")])
+
+[node name="DeleteOnWaveComplete" parent="." instance=ExtResource("15_x33rp")]

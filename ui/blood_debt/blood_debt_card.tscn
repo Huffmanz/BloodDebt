@@ -1,18 +1,20 @@
-[gd_scene load_steps=24 format=3 uid="uid://bj0yiievc88my"]
+[gd_scene load_steps=26 format=3 uid="uid://bj0yiievc88my"]
 
 [ext_resource type="Texture2D" uid="uid://dlq3th3t16272" path="res://assets/ui/ui.png" id="1_rddv0"]
 [ext_resource type="Script" path="res://ui/blood_debt/blood_debt_card.gd" id="1_s7r8j"]
 [ext_resource type="PackedScene" uid="uid://dp2d5yhhoypry" path="res://components/random_stream_player.tscn" id="2_ko6y7"]
-[ext_resource type="AudioStream" uid="uid://caktqoh402ptb" path="res://assets/sfx/ui/switch1.ogg" id="3_72avo"]
-[ext_resource type="AudioStream" uid="uid://bkc8wayhkrgs" path="res://assets/sfx/ui/switch2.ogg" id="4_7p5y3"]
-[ext_resource type="AudioStream" uid="uid://bwtdsl7ony6nm" path="res://assets/sfx/ui/switch3.ogg" id="5_b6lxi"]
-[ext_resource type="AudioStream" uid="uid://b6ie8xda7304y" path="res://assets/sfx/ui/switch4.ogg" id="6_w3r7a"]
-[ext_resource type="AudioStream" uid="uid://dolknlxuxwhbo" path="res://assets/sfx/ui/switch5.ogg" id="7_1jb1n"]
-[ext_resource type="AudioStream" uid="uid://c7jt3i0luxft4" path="res://assets/sfx/ui/switch6.ogg" id="8_u0ru2"]
-[ext_resource type="AudioStream" uid="uid://eggmr04546re" path="res://assets/sfx/ui/switch7.ogg" id="9_lpvw4"]
-[ext_resource type="AudioStream" uid="uid://djdebmev00102" path="res://assets/sfx/ui/switch8.ogg" id="10_gegc6"]
-[ext_resource type="AudioStream" uid="uid://by12d3sfj7ij0" path="res://assets/sfx/ui/switch9.ogg" id="11_f7kur"]
-[ext_resource type="AudioStream" uid="uid://eiams670fsfq" path="res://assets/sfx/ui/switch10.ogg" id="12_6641g"]
+[ext_resource type="AudioStream" uid="uid://bq7xkyxxw0vcy" path="res://assets/sfx/cards/card-slide-1.ogg" id="4_iumlj"]
+[ext_resource type="AudioStream" uid="uid://b7jwj43ddwjk" path="res://assets/sfx/cards/card-slide-2.ogg" id="5_rx4l4"]
+[ext_resource type="AudioStream" uid="uid://c5nx3m541p6tg" path="res://assets/sfx/cards/card-slide-3.ogg" id="6_b75vb"]
+[ext_resource type="AudioStream" uid="uid://clyde8lnespb6" path="res://assets/sfx/cards/card-slide-4.ogg" id="7_j25k6"]
+[ext_resource type="AudioStream" uid="uid://bx4vv5emvmke2" path="res://assets/sfx/cards/card-slide-5.ogg" id="8_75jan"]
+[ext_resource type="AudioStream" uid="uid://dx1wqvvghbwfd" path="res://assets/sfx/cards/card-slide-6.ogg" id="9_f40uw"]
+[ext_resource type="AudioStream" uid="uid://d151u3d6oc6er" path="res://assets/sfx/cards/card-slide-7.ogg" id="10_tlohi"]
+[ext_resource type="AudioStream" uid="uid://tldeu0usaf34" path="res://assets/sfx/cards/card-slide-8.ogg" id="11_820w4"]
+[ext_resource type="AudioStream" uid="uid://snvhs0333l6w" path="res://assets/sfx/cards/card-place-1.ogg" id="12_x40lr"]
+[ext_resource type="AudioStream" uid="uid://b6jhwyf0krm83" path="res://assets/sfx/cards/card-place-2.ogg" id="13_b3sao"]
+[ext_resource type="AudioStream" uid="uid://exsueuuprl3r" path="res://assets/sfx/cards/card-place-3.ogg" id="14_5qtog"]
+[ext_resource type="AudioStream" uid="uid://cuot0euw3ik5b" path="res://assets/sfx/cards/card-place-4.ogg" id="15_11jju"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5o7sp"]
 texture = ExtResource("1_rddv0")
@@ -249,6 +251,7 @@ layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_fbv1d")
 
 [node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer"]
@@ -277,7 +280,7 @@ libraries = {
 }
 
 [node name="HoverPlayer" parent="." instance=ExtResource("2_ko6y7")]
-streams = Array[AudioStream]([ExtResource("3_72avo"), ExtResource("4_7p5y3"), ExtResource("5_b6lxi"), ExtResource("6_w3r7a"), ExtResource("7_1jb1n"), ExtResource("8_u0ru2"), ExtResource("9_lpvw4"), ExtResource("10_gegc6"), ExtResource("11_f7kur"), ExtResource("12_6641g")])
+streams = Array[AudioStream]([ExtResource("4_iumlj"), ExtResource("5_rx4l4"), ExtResource("6_b75vb"), ExtResource("7_j25k6"), ExtResource("8_75jan"), ExtResource("9_f40uw"), ExtResource("10_tlohi"), ExtResource("11_820w4")])
 
 [node name="ClickPlayer" parent="." instance=ExtResource("2_ko6y7")]
-streams = Array[AudioStream]([ExtResource("3_72avo"), ExtResource("4_7p5y3"), ExtResource("5_b6lxi"), ExtResource("6_w3r7a"), ExtResource("7_1jb1n"), ExtResource("8_u0ru2"), ExtResource("9_lpvw4"), ExtResource("10_gegc6"), ExtResource("11_f7kur"), ExtResource("12_6641g")])
+streams = Array[AudioStream]([ExtResource("12_x40lr"), ExtResource("13_b3sao"), ExtResource("14_5qtog"), ExtResource("15_11jju")])

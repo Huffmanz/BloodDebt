@@ -18,6 +18,7 @@ signal blood_debt_effect_reduce(percentage: float)
 signal blood_debt_effect_multiplier(amount: int)
 signal blood_debt_effect_player_damage_taken(multiplier: int)
 signal blood_debt_effect_enemy_spawn_rate(multiplier: float)
+signal blood_debt_effect_enemy_health(multiplier: float)
 
 func emit_camera_shake(camera_shake_strength: float) -> void:
 	camera_shake.emit(camera_shake_strength)

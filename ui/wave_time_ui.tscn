@@ -23,7 +23,8 @@ size_flags_vertical = 4
 
 [node name="WaveTextLabel" type="Label" parent="MarginContainer/VBoxContainer/WaveNumberUI"]
 layout_mode = 2
-theme_override_constants/outline_size = 6
+theme_override_colors/font_outline_color = Color(0.227451, 0.0352941, 0.0666667, 1)
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 24
 text = "WAVE"
 
@@ -31,8 +32,8 @@ text = "WAVE"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
+theme_override_colors/font_outline_color = Color(0.227451, 0.0352941, 0.0666667, 1)
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 24
 text = "1
 "
@@ -46,5 +47,6 @@ size_flags_vertical = 0
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/outline_size = 6
+theme_override_colors/font_outline_color = Color(0.227451, 0.0352941, 0.0666667, 1)
+theme_override_constants/outline_size = 8
 text = "0:00"

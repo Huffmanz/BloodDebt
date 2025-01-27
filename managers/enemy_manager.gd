@@ -10,6 +10,7 @@ const SPAWN_RADIUS = 350;
 var base_spawn_time = 0
 var enemy_table = WeightedTable.new()
 
+var enemy_health_mulitplier = 1
 
 func _ready():
 	enemy_table.add_item(basic_enemy_scene, 10)
@@ -18,9 +19,11 @@ func _ready():
 	base_spawn_time = timer.wait_time
 	GameEvents.wave_complete.connect(_wave_complete)
 	GameEvents.wave_started.connect(_wave_started)
+	GameEvents.blood_debt_effect_enemy_health.connect(_enemy_health_event)
 
 	
 func _wave_complete(wave_number: int):
+	enemy_health_mulitplier = 1
 	timer.stop()
 	
 func _wave_started(wave_number: int):
@@ -60,6 +63,7 @@ func on_timer_timeout():
 	
 	entities_layer.add_child(enemy)
 	enemy.global_position = get_spawn_position()
+	enemy.increase_health(enemy_health_mulitplier)
 
 func on_wave_difficulty_increased(wave_difficulty: int):
 	var time_off = (.1 /12) * wave_difficulty # 12 5 second segments in a minute
@@ -70,4 +74,8 @@ func on_wave_difficulty_increased(wave_difficulty: int):
 	elif wave_difficulty == 18:
 		print()
 		#enemy_table.add_item(bat_enemy_scene, 10)
+		
+func _enemy_health_event(multiplier: float):
+	enemy_health_mulitplier = multiplier
+	
 	

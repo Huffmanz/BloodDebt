@@ -1,0 +1,65 @@
+[gd_scene load_steps=19 format=3 uid="uid://6phrbkdxq2y0"]
+
+[ext_resource type="Texture2D" uid="uid://dlq3th3t16272" path="res://assets/ui/ui.png" id="1_j1vin"]
+[ext_resource type="PackedScene" uid="uid://dp2d5yhhoypry" path="res://components/random_stream_player.tscn" id="1_qoril"]
+[ext_resource type="Script" path="res://ui/sound_button.gd" id="1_tym3l"]
+[ext_resource type="AudioStream" uid="uid://caktqoh402ptb" path="res://assets/sfx/ui/switch1.ogg" id="2_4ry7g"]
+[ext_resource type="AudioStream" uid="uid://bkc8wayhkrgs" path="res://assets/sfx/ui/switch2.ogg" id="3_u8376"]
+[ext_resource type="AudioStream" uid="uid://bwtdsl7ony6nm" path="res://assets/sfx/ui/switch3.ogg" id="4_e5gbk"]
+[ext_resource type="AudioStream" uid="uid://b6ie8xda7304y" path="res://assets/sfx/ui/switch4.ogg" id="5_fw2mp"]
+[ext_resource type="AudioStream" uid="uid://dolknlxuxwhbo" path="res://assets/sfx/ui/switch5.ogg" id="6_ffpac"]
+[ext_resource type="AudioStream" uid="uid://c7jt3i0luxft4" path="res://assets/sfx/ui/switch6.ogg" id="7_jaet5"]
+[ext_resource type="AudioStream" uid="uid://eggmr04546re" path="res://assets/sfx/ui/switch7.ogg" id="8_kk101"]
+[ext_resource type="AudioStream" uid="uid://djdebmev00102" path="res://assets/sfx/ui/switch8.ogg" id="9_iixcw"]
+[ext_resource type="AudioStream" uid="uid://by12d3sfj7ij0" path="res://assets/sfx/ui/switch9.ogg" id="10_itnon"]
+[ext_resource type="AudioStream" uid="uid://eiams670fsfq" path="res://assets/sfx/ui/switch10.ogg" id="11_funuc"]
+[ext_resource type="Script" path="res://addons/shaker/shaker.gd" id="12_nnbso"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d8g15"]
+load_path = "res://.godot/imported/ui.png-18543ef61e2d0147d509ac18b5e095b1.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yygb0"]
+texture = SubResource("CompressedTexture2D_d8g15")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(52, 4, 8, 8)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q18i6"]
+texture = ExtResource("1_j1vin")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(36, 4, 8, 8)
+
+[sub_resource type="Curve" id="Curve_g8o2l"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="SoundButton" type="Button"]
+custom_minimum_size = Vector2(75, 25)
+offset_right = 8.0
+offset_bottom = 8.0
+pivot_offset = Vector2(37, 12)
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_yygb0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_q18i6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_q18i6")
+text = "PRESS ME"
+script = ExtResource("1_tym3l")
+
+[node name="RandomStreamPlayer" parent="." instance=ExtResource("1_qoril")]
+bus = &"sfx"
+streams = Array[AudioStream]([ExtResource("2_4ry7g"), ExtResource("3_u8376"), ExtResource("4_e5gbk"), ExtResource("5_fw2mp"), ExtResource("6_ffpac"), ExtResource("7_jaet5"), ExtResource("8_kk101"), ExtResource("9_iixcw"), ExtResource("10_itnon"), ExtResource("11_funuc")])
+
+[node name="BloodDebtShaker" type="Node" parent="." node_paths=PackedStringArray("target_node")]
+unique_name_in_owner = true
+script = ExtResource("12_nnbso")
+target_node = NodePath("..")
+target_property = &"rotation"
+min_value = 2.0
+max_value = -2.0
+duration = 1.0
+fall_off = SubResource("Curve_g8o2l")

@@ -26,7 +26,13 @@ func set_ability_upgrades(upgrades: Array[BloodDebtUpgrade]):
 		delay += .2
 		
 func _pay_debt_button():
-	#get_tree().paused = false
+	get_tree().paused = false
+	var delay = .2
+	for child in card_container.get_children():
+		if child is BloodDebtCard:
+			child.play_discard()
+			await get_tree().create_timer(delay).timeout
+			delay += .3
 	pay_debt.emit()
 	queue_free()
 	

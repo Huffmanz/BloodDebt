@@ -25,6 +25,7 @@ func _ready() -> void:
 	timer.timeout.connect(_timer_timeout)
 	canvas_layer.visible = false
 	current_blood_debt = starting_blood_debt
+	#GameEvents.blood_debt_updated.emit(current_blood_debt)
 	
 func _process(delta: float) -> void:
 	var time_elapsed = timer.time_left
@@ -55,7 +56,6 @@ func pick_upgrades() -> Array[BloodDebtUpgrade]:
 		chosen_upgrades.append(chosen_upgrade)
 	return chosen_upgrades
 		
-		
 func _blood_debt_multiplier(amount: int):
 	debt_multiplier = amount
 		
@@ -67,8 +67,7 @@ func _pay_debt():
 	GameEvents.player_remove_blood.emit(current_blood_debt)
 	ScreenTransition.transition()
 	await ScreenTransition.transitioned_halfway
-	timer.start()
-	canvas_layer.visible = true
+	GameEvents.wave_start_next.emit()
 	
 func _timer_timeout():
 	get_tree().paused = false

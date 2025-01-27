@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://biy2a0xfjo8ji"]
+[gd_scene load_steps=8 format=3 uid="uid://biy2a0xfjo8ji"]
 
 [ext_resource type="Script" path="res://managers/blood_debt_manager.gd" id="1_i83b5"]
 [ext_resource type="Script" path="res://resources/blood_debt/blood_debt_upgrade.gd" id="2_heofy"]
@@ -6,13 +6,14 @@
 [ext_resource type="Resource" uid="uid://cg566rva7u2mr" path="res://resources/blood_debt/borrowed_time.tres" id="3_il6a4"]
 [ext_resource type="Resource" uid="uid://b7guqg76iutwl" path="res://resources/blood_debt/curse_of_aggression.tres" id="4_c20ng"]
 [ext_resource type="Resource" uid="uid://bbmyfm3quht1l" path="res://resources/blood_debt/swarms_call.tres" id="5_drtnf"]
+[ext_resource type="Resource" uid="uid://xnkxeb6gyys3" path="res://resources/blood_debt/demons_favor.tres" id="6_8if5w"]
 
 [node name="BloodDebtManager" type="Node"]
 process_mode = 3
 script = ExtResource("1_i83b5")
-blood_debt_upgrades = Array[ExtResource("2_heofy")]([ExtResource("3_il6a4"), ExtResource("4_c20ng"), ExtResource("5_drtnf")])
+blood_debt_upgrades = Array[ExtResource("2_heofy")]([ExtResource("3_il6a4"), ExtResource("4_c20ng"), ExtResource("5_drtnf"), ExtResource("6_8if5w")])
 blood_debt_menu = ExtResource("2_tho4f")
-starting_blood_debt = 10
+starting_blood_debt = 25
 debt_growth_rate = 0.1
 
 [node name="Timer" type="Timer" parent="."]

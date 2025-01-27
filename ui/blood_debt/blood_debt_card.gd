@@ -30,7 +30,7 @@ func on_gui_input(event: InputEvent):
 func set_ability_upgrade(new_upgrade: BloodDebtUpgrade):
 	upgrade = new_upgrade
 	name_label.text = upgrade.name
-	description.text = upgrade.description
+	description.text = upgrade.get_description()
 	
 func select_card():
 	disabled = true
@@ -42,8 +42,10 @@ func select_card():
 	selected.emit()
 	
 func play_discard():
+	if disabled:
+		return
 	animation_player.play("discard")
-
+	
 func on_mouse_entered():
 	if disabled == true:
 		return

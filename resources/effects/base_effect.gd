@@ -1,7 +1,10 @@
 class_name EffectBase
 extends Resource
 
-@export var description: String
+var description: String
 
 func apply_effect():
 	pass
+	
+func get_description() -> String:
+	return ""

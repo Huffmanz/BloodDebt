@@ -6,5 +6,5 @@
 script = ExtResource("1_n8m0m")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 30.0
 one_shot = true
