@@ -8,16 +8,13 @@
 [sub_resource type="Resource" id="Resource_ki87l"]
 script = ExtResource("2_epsop")
 amount = 1.0
-description = ""
 
 [sub_resource type="Resource" id="Resource_y044t"]
 script = ExtResource("3_apmpo")
 multiplier = 2.0
-description = ""
 
 [resource]
 script = ExtResource("4_7o6ob")
 id = "demons_favor"
 name = "Demon's Favor"
-description = "Blood Debt reduced by 100%.  Increases Enemy health by 100%."
 effects = Array[ExtResource("1_lqhsl")]([SubResource("Resource_ki87l"), SubResource("Resource_y044t")])

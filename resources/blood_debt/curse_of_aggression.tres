@@ -8,16 +8,13 @@
 [sub_resource type="Resource" id="Resource_runnk"]
 script = ExtResource("2_okdfq")
 amount = 0.5
-description = ""
 
 [sub_resource type="Resource" id="Resource_3mcq0"]
 script = ExtResource("3_v3jit")
 multiplier = 2
-description = ""
 
 [resource]
 script = ExtResource("1_kvmtn")
 id = "curse_of_aggression"
 name = "Aggression"
-description = "Blood Debt reduced by 50%.  Player takes double damage until next payment."
 effects = Array[ExtResource("1_asy3e")]([SubResource("Resource_runnk"), SubResource("Resource_3mcq0")])

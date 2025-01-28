@@ -1,16 +1,17 @@
 extends Node
 
-const SPAWN_RADIUS = 350;
-
+@export var spawn_radius = 350
 @export var basic_enemy_scene: PackedScene
 @export var wizard_enemy_scene: PackedScene
 @export var wave_timer_manager:WaveManager
+@export var max_enemies: int = 999
 
 @onready var timer = $Timer
 var base_spawn_time = 0
 var enemy_table = WeightedTable.new()
 
 var enemy_health_mulitplier = 1
+var enemy_count := 0
 
 func _ready():
 	enemy_table.add_item(basic_enemy_scene, 10)
@@ -37,7 +38,7 @@ func get_spawn_position():
 	var random_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	for i in 4:
 		
-		spawn_position = player.global_position + (random_direction * SPAWN_RADIUS)
+		spawn_position = player.global_position + (random_direction * spawn_radius)
 		var additonal_check_offset = random_direction * 20
 		var query_parameters = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position + additonal_check_offset, 1 << 0)
 		var result = get_tree().root.world_2d.direct_space_state.intersect_ray(query_parameters)
@@ -51,17 +52,20 @@ func get_spawn_position():
 	
 func on_timer_timeout():
 	timer.start()
-	
+
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
 		return
-	var enemy_scene = enemy_table.pick_item()
-	var enemy = enemy_scene.instantiate() as Node2D
 	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
 	if entities_layer == null:
 		return
 	
+	if entities_layer.get_child_count() - 1 >= max_enemies:
+		return
+	var enemy_scene = enemy_table.pick_item()
+	var enemy = enemy_scene.instantiate() as Node2D
 	entities_layer.add_child(enemy)
+	enemy_count += 1
 	enemy.global_position = get_spawn_position()
 	enemy.increase_health(enemy_health_mulitplier)
 
