@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BloodDebtUpgrade" load_steps=7 format=3 uid="uid://e2krtm3gw2vq"]
+
+[ext_resource type="Script" path="res://resources/effects/base_effect.gd" id="1_i7ers"]
+[ext_resource type="Script" path="res://resources/effects/add_blood_debt_effect.gd" id="2_8nl5o"]
+[ext_resource type="Script" path="res://resources/effects/increase_enemy_drop_rate.gd" id="3_jm8qu"]
+[ext_resource type="Script" path="res://resources/blood_debt/blood_debt_upgrade.gd" id="4_gukgh"]
+
+[sub_resource type="Resource" id="Resource_xwx75"]
+script = ExtResource("2_8nl5o")
+percent = 0.25
+
+[sub_resource type="Resource" id="Resource_udxvv"]
+script = ExtResource("3_jm8qu")
+multiplier = 2
+
+[resource]
+script = ExtResource("4_gukgh")
+id = "blood_harvest"
+name = "Blood Harvest"
+effects = Array[ExtResource("1_i7ers")]([SubResource("Resource_xwx75"), SubResource("Resource_udxvv")])

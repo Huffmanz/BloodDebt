@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BloodDebtUpgrade" load_steps=7 format=3 uid="uid://cfqpuuit6kv5v"]
+
+[ext_resource type="Script" path="res://resources/effects/base_effect.gd" id="1_ag7no"]
+[ext_resource type="Script" path="res://resources/effects/add_blood_debt_effect.gd" id="2_kbbuk"]
+[ext_resource type="Script" path="res://resources/effects/reduce_player_projectile_cost.gd" id="3_0usku"]
+[ext_resource type="Script" path="res://resources/blood_debt/blood_debt_upgrade.gd" id="4_tdvwc"]
+
+[sub_resource type="Resource" id="Resource_vub4w"]
+script = ExtResource("2_kbbuk")
+percent = 0.25
+
+[sub_resource type="Resource" id="Resource_u1yid"]
+script = ExtResource("3_0usku")
+percent = 1.0
+
+[resource]
+script = ExtResource("4_tdvwc")
+id = "blood_pact"
+name = "Blood Pact"
+effects = Array[ExtResource("1_ag7no")]([SubResource("Resource_vub4w"), SubResource("Resource_u1yid")])

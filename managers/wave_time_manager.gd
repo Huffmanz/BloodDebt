@@ -3,17 +3,19 @@ extends Node
 
 signal wave_difficulty_increased(arena_difficulty: int)
 const DIFFICULTY_INTERVAL = 5
-
+const END_SCREEN = preload("res://levels/end_screen.tscn")
 @onready var timer = $Timer
 
 var wave_difficulty = 0
 var current_wave = 0
-var spawn_multiplier = 1
+
+var wave_time_percent := 0
 
 func _ready():
 	timer.timeout.connect(on_timer_timeout)
 	GameEvents.wave_start_next.connect(start_wave)
-	GameEvents.blood_debt_effect_enemy_spawn_rate.connect(_increase_spawn_multiplier)
+	GameEvents.blood_debt_effect_reduce_wave_time.connect(_reduce_next_wave_time)
+	GameEvents.player_died.connect(_on_player_died)
 	start_wave()
 	
 func _process(delta):
@@ -24,14 +26,15 @@ func _process(delta):
 		
 func start_wave():
 	var next_wave_time = timer.wait_time + current_wave * DIFFICULTY_INTERVAL
-	next_wave_time *= spawn_multiplier
+	next_wave_time -= next_wave_time * wave_time_percent
 	timer.wait_time = next_wave_time
 	current_wave += 1
 	timer.start()
 	GameEvents.wave_started.emit(current_wave)
 	
-func _increase_spawn_multiplier(multiplier: float):
-	spawn_multiplier = multiplier
+func _reduce_next_wave_time(percentage: float):
+	wave_time_percent = percentage
+	print(wave_time_percent)
 	
 func get_time_elapsed():
 	return timer.time_left
@@ -39,5 +42,11 @@ func get_time_elapsed():
 func on_timer_timeout():
 	ScreenTransition.transition()
 	await ScreenTransition.transitioned_halfway
-	spawn_multiplier = 1
+	wave_time_percent = 0
 	GameEvents.wave_complete.emit(current_wave)
+	
+func _on_player_died():
+	timer.stop()
+	var instance = END_SCREEN.instantiate()
+	get_tree().current_scene.add_child(instance)
+	instance.init(current_wave)

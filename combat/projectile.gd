@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var damage_multiplier = 1.0
+
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 @onready var velocity_component: VelocityComponent = $VelocityComponent
 @onready var delete_timer: Timer = $DeleteTimer
@@ -13,6 +15,7 @@ func _ready():
 	hitbox_component.body_entered.connect(on_body_entered)
 	delete_timer.timeout.connect(_on_delete_timeout)
 	shoot_stream_player.play_random()
+	hitbox_component.damage = hitbox_component.damage * damage_multiplier
 
 func _physics_process(delta: float) -> void:
 	velocity = velocity_component.accelerate_in_direction(global_transform.x)
@@ -30,6 +33,10 @@ func on_area_entered(other_area:Node2D):
 		impact_stream_player.play_random()
 		await impact_stream_player.finished
 		queue_free()
+
+func increase_damage_mulitplier(multiplier: float):
+	damage_multiplier = multiplier
+	hitbox_component.damage = hitbox_component.damage * damage_multiplier
 	
 func on_body_entered(other_body):
 	queue_free()

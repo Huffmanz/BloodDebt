@@ -11,8 +11,10 @@ var base_spawn_time = 0
 var enemy_table = WeightedTable.new()
 
 var enemy_health_mulitplier = 1
+var spawn_multiplier = 1
 var enemy_count := 0
 
+var drop_multiplier = 1
 func _ready():
 	enemy_table.add_item(basic_enemy_scene, 10)
 	timer.timeout.connect(on_timer_timeout)
@@ -21,13 +23,19 @@ func _ready():
 	GameEvents.wave_complete.connect(_wave_complete)
 	GameEvents.wave_started.connect(_wave_started)
 	GameEvents.blood_debt_effect_enemy_health.connect(_enemy_health_event)
+	GameEvents.blood_debt_effect_enemy_spawn_rate.connect(_increase_spawn_multiplier)
+	GameEvents.blood_debt_effect_enemy_drop_rate.connect(_increase_drop_rate)
 
 	
 func _wave_complete(wave_number: int):
 	enemy_health_mulitplier = 1
+	spawn_multiplier = 1
+	drop_multiplier = 1
+	timer.wait_time = base_spawn_time
 	timer.stop()
 	
 func _wave_started(wave_number: int):
+	timer.wait_time *= spawn_multiplier
 	timer.start()
 	
 func get_spawn_position():  
@@ -68,11 +76,13 @@ func on_timer_timeout():
 	enemy_count += 1
 	enemy.global_position = get_spawn_position()
 	enemy.increase_health(enemy_health_mulitplier)
+	enemy.item_drop_multiplier = drop_multiplier
 
 func on_wave_difficulty_increased(wave_difficulty: int):
 	var time_off = (.1 /12) * wave_difficulty # 12 5 second segments in a minute
 	time_off = min(time_off, .8)
 	timer.wait_time = base_spawn_time - time_off
+	timer.wait_time /= spawn_multiplier
 	if wave_difficulty == 6:
 		enemy_table.add_item(wizard_enemy_scene, 15)
 	elif wave_difficulty == 18:
@@ -82,4 +92,8 @@ func on_wave_difficulty_increased(wave_difficulty: int):
 func _enemy_health_event(multiplier: float):
 	enemy_health_mulitplier = multiplier
 	
+func _increase_spawn_multiplier(multiplier: float):
+	spawn_multiplier = multiplier
 	
+func _increase_drop_rate(multiplier: int):
+	drop_multiplier = multiplier

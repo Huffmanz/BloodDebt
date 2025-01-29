@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BloodDebtUpgrade" load_steps=7 format=3 uid="uid://c60ccyf7hxb1i"]
+
+[ext_resource type="Script" path="res://resources/effects/base_effect.gd" id="1_wikx1"]
+[ext_resource type="Script" path="res://resources/effects/add_blood_debt_effect.gd" id="2_od8vp"]
+[ext_resource type="Script" path="res://resources/effects/increase_player_damage.gd" id="3_fwupo"]
+[ext_resource type="Script" path="res://resources/blood_debt/blood_debt_upgrade.gd" id="4_7xqxy"]
+
+[sub_resource type="Resource" id="Resource_ghs1s"]
+script = ExtResource("2_od8vp")
+percent = 0.25
+
+[sub_resource type="Resource" id="Resource_7wlmd"]
+script = ExtResource("3_fwupo")
+multiplier = 3.0
+
+[resource]
+script = ExtResource("4_7xqxy")
+id = "damage_boost"
+name = "Damage Boost"
+effects = Array[ExtResource("1_wikx1")]([SubResource("Resource_ghs1s"), SubResource("Resource_7wlmd")])

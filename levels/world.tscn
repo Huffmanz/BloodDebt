@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dh4g5lvct4ome"]
+[gd_scene load_steps=16 format=4 uid="uid://dh4g5lvct4ome"]
 
 [ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="1_jcdjx"]
 [ext_resource type="PackedScene" uid="uid://df6l8uwqvwnk7" path="res://managers/wave_time_manager.tscn" id="1_ue0gm"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://biy2a0xfjo8ji" path="res://managers/blood_debt_manager.tscn" id="6_envjh"]
 [ext_resource type="Texture2D" uid="uid://b6pih58pojya8" path="res://assets/Pixel Crawler/Environment/Dungeon Prison/Assets/Tiles.png" id="9_8v73w"]
 [ext_resource type="Texture2D" uid="uid://da4t8xkvcx157" path="res://assets/Pixel Crawler/Environment/Dungeon Prison/Assets/Props.png" id="10_4bcvb"]
-[ext_resource type="AudioStream" uid="uid://kckffwfnxa20" path="res://assets/sfx/music/universfield__tense-music-for-tense-scenes.mp3" id="10_arjgw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7rwuf"]
 shader = ExtResource("1_jcdjx")
@@ -361,7 +360,9 @@ texture = ExtResource("10_4bcvb")
 1:0/0 = 0
 3:0/0 = 0
 4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:0/0 = 0
 7:0/0 = 0
 8:0/0 = 0
@@ -369,7 +370,9 @@ texture = ExtResource("10_4bcvb")
 10:0/0 = 0
 11:0/0 = 0
 0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:1/0 = 0
 3:1/0 = 0
 4:1/0 = 0
@@ -393,7 +396,9 @@ texture = ExtResource("10_4bcvb")
 8:2/0 = 0
 9:2/0 = 0
 10:2/0 = 0
+10:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:2/0 = 0
+11:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 12:2/0 = 0
 13:2/0 = 0
 0:3/0 = 0
@@ -401,13 +406,17 @@ texture = ExtResource("10_4bcvb")
 2:3/0 = 0
 3:3/0 = 0
 4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:3/0 = 0
 7:3/0 = 0
 8:3/0 = 0
 9:3/0 = 0
 10:3/0 = 0
+10:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:3/0 = 0
+11:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 12:3/0 = 0
 0:4/0 = 0
 1:4/0 = 0
@@ -431,8 +440,11 @@ texture = ExtResource("10_4bcvb")
 9:5/0 = 0
 10:5/0 = 0
 12:5/0 = 0
+12:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 13:5/0 = 0
+13:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:5/0 = 0
+14:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:6/0 = 0
 1:6/0 = 0
 2:6/0 = 0
@@ -548,9 +560,13 @@ texture = ExtResource("10_4bcvb")
 4:15/0 = 0
 5:15/0 = 0
 6:15/0 = 0
+6:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:15/0 = 0
+7:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:15/0 = 0
+8:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:15/0 = 0
+9:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_1o0op"]
 physics_layer_0/collision_layer = 1
@@ -595,9 +611,11 @@ tile_map_data = PackedByteArray("AAAAAPT/AwABAAAAAAAAAPX/AwABAAEAAAAAAPb/AwABAAI
 tile_set = SubResource("TileSet_1o0op")
 
 [node name="Decor" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAANAPT/AwACAAcAAAANAPX/AwACAAgAAAANAPb/AwACAAkAAAAOAPT/AwADAAcAAAAOAPX/AwADAAgAAAAOAPb/AwADAAkAAAAYAPT/AwADAAAAAAAYAPX/AwADAAEAAAAYAPb/AwADAAIAAAAYAPf/AwADAAMAAAAAAPT/AwADAAAAAAAAAPX/AwADAAEAAAAAAPb/AwADAAIAAAAAAPf/AwADAAMAAADu//T/AwADAAAAAADu//X/AwADAAEAAADu//b/AwADAAIAAADu//f/AwADAAMAAADd//T/AwADAAAAAADd//X/AwADAAEAAADd//b/AwADAAIAAADd//f/AwADAAMAAAA/APT/AwADAAAAAAA/APX/AwADAAEAAAA/APb/AwADAAIAAAA/APf/AwADAAMAAAAtAPT/AwADAAAAAAAtAPX/AwADAAEAAAAtAPb/AwADAAIAAAAtAPf/AwADAAMAAADl//f/AwAAABMAAADl//j/AwAAABQAAADl//n/AwAAABUAAADm//b/AwABABIAAADm//f/AwABABMAAADm//j/AwABABQAAADm//n/AwABABUAAADn//f/AwACABMAAADn//j/AwACABQAAADn//n/AwACABUAAAA1APf/AwAAABMAAAA1APj/AwAAABQAAAA1APn/AwAAABUAAAA2APb/AwABABIAAAA2APf/AwABABMAAAA2APj/AwABABQAAAA2APn/AwABABUAAAA3APf/AwACABMAAAA3APj/AwACABQAAAA3APn/AwACABUAAAAhAPf/AwAAABMAAAAhAPj/AwAAABQAAAAhAPn/AwAAABUAAAAiAPb/AwABABIAAAAiAPf/AwABABMAAAAiAPj/AwABABQAAAAiAPn/AwABABUAAAAjAPf/AwACABMAAAAjAPj/AwACABQAAAAjAPn/AwACABUAAAD3//f/AwAAABMAAAD3//j/AwAAABQAAAD3//n/AwAAABUAAAD4//b/AwABABIAAAD4//f/AwABABMAAAD4//j/AwABABQAAAD4//n/AwABABUAAAD5//f/AwACABMAAAD5//j/AwACABQAAAD5//n/AwACABUAAAA=")
 tile_set = SubResource("TileSet_1o0op")
 
 [node name="Props" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AADP//b/BAAAAAEAAADP//f/BAAAAAEAAADQ//b/BAAAAAAAAADQ//f/BAAAAAEAAADP//X/BAAAAAAAAADR//b/BAABAAAAAADR//f/BAABAAEAAABNAPb/BAABAAEAAABNAPf/BAABAAEAAABNAPX/BAABAAAAAABMAPb/BAABAAEAAABMAPf/BAABAAEAAABMAPX/BAABAAAAAABLAPb/BAAAAAAAAABLAPf/BAAAAAEAAABNACEABAAAAAAAAABMACEABAABAAAAAAAWACEABAABAAAAAADP/yEABAAAAAAAAADQ/yEABAAAAAAAAADR/yEABAABAAAAAAA=")
 tile_set = SubResource("TileSet_1o0op")
 
 [node name="entities" type="Node2D" parent="." groups=["entities_layer"]]
@@ -606,9 +624,3 @@ tile_set = SubResource("TileSet_1o0op")
 position = Vector2(321, 180)
 
 [node name="foreground" type="Node2D" parent="." groups=["foreground_layer"]]
-
-[node name="Music" type="AudioStreamPlayer2D" parent="."]
-process_mode = 3
-stream = ExtResource("10_arjgw")
-autoplay = true
-bus = &"music"

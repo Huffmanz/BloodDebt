@@ -22,6 +22,7 @@ func _ready() -> void:
 	
 	GameEvents.blood_debt_effect_multiplier.connect(_blood_debt_multiplier)
 	GameEvents.blood_debt_effect_reduce.connect(_reduce_blood_debt)
+	GameEvents.blood_debt_effect_add.connect(_add_blood_debt)
 	timer.timeout.connect(_timer_timeout)
 	canvas_layer.visible = false
 	current_blood_debt = starting_blood_debt
@@ -50,7 +51,7 @@ func _wave_complete(wave_number: int) -> void:
 func pick_upgrades() -> Array[BloodDebtUpgrade]:
 	var upgrade_pool: Array[BloodDebtUpgrade] = blood_debt_upgrades.duplicate()
 	var chosen_upgrades: Array[BloodDebtUpgrade] = []
-	for i in 2:
+	for i in 3:
 		var chosen_upgrade = upgrade_pool.pick_random()
 		upgrade_pool.erase(chosen_upgrade)
 		chosen_upgrades.append(chosen_upgrade)
@@ -61,6 +62,10 @@ func _blood_debt_multiplier(amount: int):
 		
 func _reduce_blood_debt(percent: float):
 	current_blood_debt = current_blood_debt - (current_blood_debt * percent)
+	GameEvents.blood_debt_updated.emit(current_blood_debt)
+	
+func _add_blood_debt(percent: float):
+	current_blood_debt += current_blood * percent
 	GameEvents.blood_debt_updated.emit(current_blood_debt)
 	
 func _pay_debt():

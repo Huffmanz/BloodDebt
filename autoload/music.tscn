@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3kfbqr7vjwu"]
+
+[ext_resource type="AudioStream" uid="uid://kckffwfnxa20" path="res://assets/sfx/music/universfield__tense-music-for-tense-scenes.mp3" id="1_treys"]
+
+[node name="Music" type="AudioStreamPlayer2D"]
+process_mode = 3
+stream = ExtResource("1_treys")
+autoplay = true
+bus = &"music"

@@ -10,6 +10,8 @@ extends CharacterBody2D
 
 var dead := false
 var gib_component = preload("res://components/gib_component/knight_gib_component.tscn")
+var item_drop_multiplier := 1
+var item_drop_attempts := 0
 
 func _init() -> void:
 	pass
@@ -31,13 +33,16 @@ func _died():
 	get_tree().current_scene.add_child(gib_instance)
 	
 	visuals.queue_free()
-	item_drop_component.spawn_items()
+	for i in range(item_drop_multiplier):
+		item_drop_attempts += 1
+		item_drop_component.spawn_items()
 	GameEvents.camera_shake
 	Utils.frameFreeze(0.1, 0.3)
 	GameEvents.emit_camera_shake(5)
 
 func _items_spawned():
-	queue_free()
+	if item_drop_attempts == item_drop_multiplier:
+		queue_free()
 	
 func flip():
 	var move_sign = sign(velocity.x)

@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GameEvents="*res://autoload/game_events.gd"
 ScreenTransition="*res://autoload/screen_transition.tscn"
 Utils="*res://autoload/utils.gd"
+Music="*res://autoload/music.tscn"
 
 [display]
 

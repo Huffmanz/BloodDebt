@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BloodDebtUpgrade" load_steps=7 format=3 uid="uid://cyio751yaew60"]
+
+[ext_resource type="Script" path="res://resources/effects/base_effect.gd" id="1_k8g3o"]
+[ext_resource type="Script" path="res://resources/effects/reduce_blood_debt_effect.gd" id="2_achax"]
+[ext_resource type="Script" path="res://resources/effects/reduce_wave_timer_effect.gd" id="3_tu40g"]
+[ext_resource type="Script" path="res://resources/blood_debt/blood_debt_upgrade.gd" id="4_q86ha"]
+
+[sub_resource type="Resource" id="Resource_sgr08"]
+script = ExtResource("2_achax")
+amount = 0.25
+
+[sub_resource type="Resource" id="Resource_r7uug"]
+script = ExtResource("3_tu40g")
+percent = 0.5
+
+[resource]
+script = ExtResource("4_q86ha")
+id = "relentless_march"
+name = "Relentless March"
+effects = Array[ExtResource("1_k8g3o")]([SubResource("Resource_sgr08"), SubResource("Resource_r7uug")])
