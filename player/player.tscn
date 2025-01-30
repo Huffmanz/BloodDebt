@@ -1,9 +1,11 @@
-[gd_scene load_steps=36 format=3 uid="uid://k0b7bq4x6osb"]
+[gd_scene load_steps=39 format=3 uid="uid://k0b7bq4x6osb"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_v6xto"]
 [ext_resource type="PackedScene" uid="uid://bmqxntns8k615" path="res://movement/velocity_component.tscn" id="2_3dy3y"]
+[ext_resource type="PackedScene" uid="uid://bd5x6iwri411w" path="res://player/ghost_effect.tscn" id="2_5t3r3"]
 [ext_resource type="PackedScene" uid="uid://ba3o6wranxgfb" path="res://combat/health_component.tscn" id="2_sa1f4"]
 [ext_resource type="PackedScene" uid="uid://c4toavcgqire5" path="res://combat/hurtbox_component.tscn" id="3_ycwor"]
+[ext_resource type="Texture2D" uid="uid://comps5guprkix" path="res://assets/vfx/dust_effect.png" id="4_7gnm6"]
 [ext_resource type="Script" path="res://player/camera_2d.gd" id="4_cw4nm"]
 [ext_resource type="PackedScene" path="res://combat/health_regen_component.tscn" id="4_jp21s"]
 [ext_resource type="Texture2D" uid="uid://c361mkbgpq3vc" path="res://assets/AnimationSheet_Character.png" id="6_df26f"]
@@ -178,9 +180,16 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_nw0u4"]
 radius = 34.0147
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rqi7b"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_v6xto")
+ghost_scene = ExtResource("2_5t3r3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_sim1c")
@@ -198,6 +207,9 @@ one_shot = true
 
 [node name="DashCooldown" type="Timer" parent="DashingComponent"]
 one_shot = true
+
+[node name="GhostTimer" type="Timer" parent="DashingComponent"]
+wait_time = 0.05
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_sa1f4")]
 max_health = 100.0
@@ -238,3 +250,16 @@ shape = SubResource("CircleShape2D_nw0u4")
 [node name="HurtAudioPlayer" parent="." instance=ExtResource("9_njxbq")]
 bus = &"sfx"
 streams = Array[AudioStream]([ExtResource("10_t4uf8"), ExtResource("11_d6g6r"), ExtResource("12_hg5fe")])
+
+[node name="DashParticles" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_rqi7b")
+position = Vector2(0, 14)
+amount = 28
+texture = ExtResource("4_7gnm6")
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+anim_speed_min = 2.0
+anim_speed_max = 2.0

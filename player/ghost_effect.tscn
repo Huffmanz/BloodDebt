@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd5x6iwri411w"]
+
+[ext_resource type="Texture2D" uid="uid://c361mkbgpq3vc" path="res://assets/AnimationSheet_Character.png" id="1_jlioe"]
+[ext_resource type="Script" path="res://player/ghost_effect.gd" id="2_t0t03"]
+
+[node name="GhostEffect" type="Sprite2D"]
+self_modulate = Color(0.466181, 0.466181, 0.466181, 1)
+texture = ExtResource("1_jlioe")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+script = ExtResource("2_t0t03")

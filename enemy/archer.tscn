@@ -1,0 +1,157 @@
+[gd_scene load_steps=22 format=3 uid="uid://bkndnmthcxa3r"]
+
+[ext_resource type="PackedScene" uid="uid://cxy2wkr77qtfl" path="res://enemy/enemy.tscn" id="1_tt3ul"]
+[ext_resource type="Script" path="res://enemy/archer.gd" id="2_jofir"]
+[ext_resource type="Texture2D" uid="uid://bc2ixpdegwawu" path="res://assets/Pixel Crawler/Heroes/Rogue/Idle/Idle-Sheet.png" id="3_lqjae"]
+[ext_resource type="PackedScene" uid="uid://bpeymwo50k1we" path="res://enemy/archer/archer_ghost_effect.tscn" id="3_n5cyn"]
+[ext_resource type="Texture2D" uid="uid://6x6mtjcrug34" path="res://assets/Pixel Crawler/Weapons/Wood/bow.png" id="4_l5c4e"]
+[ext_resource type="PackedScene" uid="uid://bmqxntns8k615" path="res://movement/velocity_component.tscn" id="5_t0lne"]
+[ext_resource type="Texture2D" uid="uid://comps5guprkix" path="res://assets/vfx/dust_effect.png" id="6_1b27c"]
+[ext_resource type="PackedScene" uid="uid://csbfy5b34ecv5" path="res://items/blood_vial/blood_vial.tscn" id="6_6g5hl"]
+[ext_resource type="PackedScene" uid="uid://cvh0746b6mmuf" path="res://items/blood_vial/blood_jug.tscn" id="7_uvkql"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evsv3"]
+atlas = ExtResource("3_lqjae")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_th4ss"]
+atlas = ExtResource("3_lqjae")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eivho"]
+atlas = ExtResource("3_lqjae")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwewf"]
+atlas = ExtResource("3_lqjae")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nv38p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evsv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_th4ss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eivho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwewf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7dek"]
+atlas = ExtResource("4_l5c4e")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfkrv"]
+atlas = ExtResource("4_l5c4e")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1c0b"]
+atlas = ExtResource("4_l5c4e")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2kurx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7dek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfkrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1c0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7dek")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 5.0
+}]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c64c4"]
+load_path = "res://.godot/imported/Hands.png-38a2e27d92b3940414d8ddc17b5ed25f.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yv2am"]
+load_path = "res://.godot/imported/Hands.png-38a2e27d92b3940414d8ddc17b5ed25f.ctex"
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oaain"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="Archer" instance=ExtResource("1_tt3ul")]
+script = ExtResource("2_jofir")
+ghost_scene = ExtResource("3_n5cyn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals" index="0"]
+position = Vector2(-1, -16)
+sprite_frames = SubResource("SpriteFrames_nv38p")
+autoplay = "default"
+frame_progress = 0.610879
+
+[node name="WeaponVisuals" type="Node2D" parent="Visuals" index="1"]
+
+[node name="Bow" type="AnimatedSprite2D" parent="Visuals/WeaponVisuals" index="0"]
+position = Vector2(12, 0)
+sprite_frames = SubResource("SpriteFrames_2kurx")
+animation = &"fire"
+frame = 3
+frame_progress = 1.0
+
+[node name="Hand" type="Sprite2D" parent="Visuals/WeaponVisuals/Bow" index="0"]
+position = Vector2(4, 0.999986)
+texture = SubResource("CompressedTexture2D_c64c4")
+region_enabled = true
+region_rect = Rect2(16, 16, 16, 16)
+
+[node name="Hand2" type="Sprite2D" parent="Visuals/WeaponVisuals" index="1"]
+position = Vector2(6.00004, 9.99998)
+rotation = -1.5708
+texture = SubResource("CompressedTexture2D_yv2am")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="HealthComponent" parent="." index="3"]
+max_health = 30.0
+
+[node name="ItemDropComponent" parent="." index="4"]
+drop_percent = 0.75
+item_scenes = Array[PackedScene]([ExtResource("6_6g5hl"), ExtResource("6_6g5hl"), ExtResource("6_6g5hl"), ExtResource("6_6g5hl"), ExtResource("7_uvkql")])
+
+[node name="DashingComponent" parent="." index="8" instance=ExtResource("5_t0lne")]
+max_speed = 500
+acceleration = 500.0
+
+[node name="DashTimer" type="Timer" parent="DashingComponent" index="0"]
+wait_time = 0.25
+one_shot = true
+
+[node name="DashCooldown" type="Timer" parent="DashingComponent" index="1"]
+one_shot = true
+
+[node name="GhostTimer" type="Timer" parent="DashingComponent" index="2"]
+wait_time = 0.05
+
+[node name="DashParticles" type="CPUParticles2D" parent="." index="9"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_oaain")
+position = Vector2(0, 14)
+amount = 28
+texture = ExtResource("6_1b27c")
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+anim_speed_min = 2.0
+anim_speed_max = 2.0

@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_xwx75"]
 script = ExtResource("2_8nl5o")
-percent = 0.25
+percent = 0.4
 
 [sub_resource type="Resource" id="Resource_udxvv"]
 script = ExtResource("3_jm8qu")

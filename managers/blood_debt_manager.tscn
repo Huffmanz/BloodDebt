@@ -15,7 +15,7 @@
 [node name="BloodDebtManager" type="Node"]
 process_mode = 3
 script = ExtResource("1_i83b5")
-blood_debt_upgrades = Array[ExtResource("2_heofy")]([ExtResource("3_il6a4"), ExtResource("4_c20ng"), ExtResource("5_drtnf"), ExtResource("6_8if5w"), ExtResource("7_gqmwr"), ExtResource("8_e6xlq"), ExtResource("9_ij43f"), ExtResource("10_i2wkv")])
+blood_debt_upgrades = Array[ExtResource("2_heofy")]([ExtResource("10_i2wkv"), ExtResource("9_ij43f"), ExtResource("3_il6a4"), ExtResource("8_e6xlq"), ExtResource("4_c20ng"), ExtResource("6_8if5w"), ExtResource("7_gqmwr"), ExtResource("5_drtnf")])
 blood_debt_menu = ExtResource("2_tho4f")
 starting_blood_debt = 25
 debt_growth_rate = 0.1

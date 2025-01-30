@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpeymwo50k1we"]
+
+[ext_resource type="PackedScene" uid="uid://bd5x6iwri411w" path="res://player/ghost_effect.tscn" id="1_uqu1x"]
+[ext_resource type="Texture2D" uid="uid://bc2ixpdegwawu" path="res://assets/Pixel Crawler/Heroes/Rogue/Idle/Idle-Sheet.png" id="2_aqio5"]
+
+[node name="ArcherGhostEffect" instance=ExtResource("1_uqu1x")]
+texture = ExtResource("2_aqio5")
+region_rect = Rect2(16, 32, 32, 32)

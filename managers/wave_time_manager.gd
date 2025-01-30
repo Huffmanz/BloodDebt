@@ -34,8 +34,7 @@ func start_wave():
 	
 func _reduce_next_wave_time(percentage: float):
 	wave_time_percent = percentage
-	print(wave_time_percent)
-	
+
 func get_time_elapsed():
 	return timer.time_left
 	

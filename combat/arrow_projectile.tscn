@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://86q0nvt2qsas"]
+
+[ext_resource type="PackedScene" uid="uid://ds1hhluvrfhil" path="res://combat/enemy_projectile.tscn" id="1_sqa3a"]
+[ext_resource type="Texture2D" uid="uid://dwtiaupvo1kb" path="res://assets/Pixel Crawler/Weapons/Wood/Wood.png" id="2_f3bo7"]
+[ext_resource type="Texture2D" uid="uid://comps5guprkix" path="res://assets/vfx/dust_effect.png" id="3_2171c"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bo0y4"]
+radius = 3.0
+height = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfj6p"]
+atlas = ExtResource("2_f3bo7")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0vw88"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfj6p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wr2lm"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="ArrowProjectile" instance=ExtResource("1_sqa3a")]
+
+[node name="VelocityComponent" parent="." index="0"]
+max_speed = 400
+acceleration = 100.0
+
+[node name="CollisionShape2D" parent="HitboxComponent" index="0"]
+position = Vector2(4, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bo0y4")
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(4, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bo0y4")
+
+[node name="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_0vw88")
+frame_progress = 0.821207
+
+[node name="DashParticles" type="CPUParticles2D" parent="." index="9"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_wr2lm")
+position = Vector2(-9, 0)
+amount = 28
+texture = ExtResource("3_2171c")
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+anim_speed_min = 2.0
+anim_speed_max = 2.0

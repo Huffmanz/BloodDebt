@@ -124,6 +124,7 @@ max_speed = 300
 [node name="HitboxComponent" parent="." index="1"]
 collision_layer = 4
 collision_mask = 5
+damage = 15
 
 [node name="AnimatedSprite2D" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_sup2p")

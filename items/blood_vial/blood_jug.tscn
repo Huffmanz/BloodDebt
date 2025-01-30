@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvh0746b6mmuf"]
+
+[ext_resource type="PackedScene" uid="uid://csbfy5b34ecv5" path="res://items/blood_vial/blood_vial.tscn" id="1_dnx0e"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ononx"]
+load_path = "res://.godot/imported/sprite_sheet.png-e5166308e47c800b8726fe291577f49d.ctex"
+
+[node name="BloodJug" instance=ExtResource("1_dnx0e")]
+blood_gain = 5
+
+[node name="Sprite2D" parent="." index="1"]
+texture = SubResource("CompressedTexture2D_ononx")
+region_rect = Rect2(16, 0, 16, 16)

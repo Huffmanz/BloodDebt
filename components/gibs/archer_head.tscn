@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxe4waol78bm"]
+
+[ext_resource type="PackedScene" uid="uid://bq0s45snm6ks4" path="res://components/gibs/gib.tscn" id="1_xsiv4"]
+[ext_resource type="Texture2D" uid="uid://0p331f0feoqw" path="res://assets/sprite_sheet.png" id="2_g5iap"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mhbdb"]
+load_path = "res://.godot/imported/sprite_sheet.png-e5166308e47c800b8726fe291577f49d.ctex"
+
+[node name="WizardHead" instance=ExtResource("1_xsiv4")]
+texture = Array[Texture2D]([ExtResource("2_g5iap")])
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(1, 1)
+texture = SubResource("CompressedTexture2D_mhbdb")
+region_enabled = true
+region_rect = Rect2(48, 208, 16, 16)

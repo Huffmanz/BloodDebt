@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 const PLAYER_PROJECTILE = preload("res://combat/player_projectile.tscn")
 
+@export var ghost_scene: PackedScene
+
 @onready var velocity_component: VelocityComponent = $VelocityComponent
 @onready var dashing_component: VelocityComponent = $DashingComponent
 @onready var health_component: HealthComponent = $HealthComponent
@@ -13,6 +15,9 @@ const PLAYER_PROJECTILE = preload("res://combat/player_projectile.tscn")
 @onready var hurt_audio_player: AudioStreamPlayer2D = $HurtAudioPlayer
 @onready var dash_cooldown: Timer = $DashingComponent/DashCooldown
 @onready var shadow: AnimatedSprite2D = $Shadow
+@onready var ghost_timer: Timer = $DashingComponent/GhostTimer
+@onready var dash_particles: CPUParticles2D = $DashParticles
+
 
 var direction := Vector2.ZERO
 var can_shoot := true
@@ -22,8 +27,9 @@ var dash_direction:=Vector2.ZERO
 var spawn_position = Vector2.ZERO
 var dead := false
 
+var base_damange := 1
 var damage_multiplier :=1
-var attack_cost_percentage := 1
+var attack_cost_percentage := 0
 
 func _ready() -> void:
 	health_component.died.connect(on_died)
@@ -40,7 +46,9 @@ func _ready() -> void:
 	GameEvents.wave_complete.connect(_wave_complete)
 	GameEvents.blood_debt_effect_player_damage.connect(_increase_damage)
 	GameEvents.blood_debt_effect_player_reduce_fire.connect(_reduce_attack_cost)
-
+	ghost_timer.timeout.connect(add_ghost)
+	dash_particles.emitting = false
+	
 func _physics_process(delta: float) -> void:
 	if dead:
 		return
@@ -51,6 +59,7 @@ func _physics_process(delta: float) -> void:
 		fire()
 	if Input.is_action_just_pressed("dash") && can_dash:
 		dash()
+		ghost_timer.start()
 		
 	if dashing:
 		velocity = dashing_component.accelerate_in_direction(dash_direction)
@@ -71,6 +80,12 @@ func dash():
 	dash_direction = direction
 	hurtbox_component.monitoring = false
 	hurtbox_component.monitorable = false
+	dash_particles.emitting = true
+
+func add_ghost():
+	var ghost = ghost_scene.instantiate()
+	ghost.set_property(global_position, animated_sprite_2d.scale)
+	get_tree().current_scene.add_child(ghost)
 
 func flip():
 	var move_sign = sign(direction.x)
@@ -87,8 +102,10 @@ func fire():
 		return
 	var mouse_direction = get_global_mouse_position() - global_position
 	var projectile : CharacterBody2D = PLAYER_PROJECTILE.instantiate()
-	Utils.create_negative_numbers(global_position + (Vector2.UP * 16), 1)
-	health_component.reduce_health(1*attack_cost_percentage)
+	var cost = base_damange - (base_damange * attack_cost_percentage)
+	if cost > 0:
+		Utils.create_negative_numbers(global_position + (Vector2.UP * 16), cost)
+	health_component.reduce_health(cost)
 	get_tree().current_scene.add_child(projectile)
 	projectile.global_position = global_position
 	projectile.rotation = mouse_direction.angle()
@@ -114,6 +131,8 @@ func _dash_timeout():
 	hurtbox_component.monitoring = true
 	hurtbox_component.monitorable = true
 	dashing = false
+	dash_particles.emitting = false
+	ghost_timer.stop()
 	dash_cooldown.start()
 	
 func _dash_cooldown_timeout():
@@ -133,7 +152,7 @@ func _wave_complete(wave_number: int):
 		return
 	hurtbox_component.multiplier = 1
 	damage_multiplier = 1
-	attack_cost_percentage = 1
+	attack_cost_percentage = 0
 	
 func _increase_damage(multiplier: int):
 	damage_multiplier = multiplier

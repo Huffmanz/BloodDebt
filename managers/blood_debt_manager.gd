@@ -65,7 +65,7 @@ func _reduce_blood_debt(percent: float):
 	GameEvents.blood_debt_updated.emit(current_blood_debt)
 	
 func _add_blood_debt(percent: float):
-	current_blood_debt += current_blood * percent
+	current_blood_debt += ceil(current_blood_debt * percent)
 	GameEvents.blood_debt_updated.emit(current_blood_debt)
 	
 func _pay_debt():

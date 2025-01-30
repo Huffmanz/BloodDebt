@@ -1,0 +1,13 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3h2dcr82i3p2"]
+
+[ext_resource type="PackedScene" uid="uid://bbcpcxppiwla" path="res://components/gib_component/gib_component.tscn" id="1_go812"]
+[ext_resource type="PackedScene" uid="uid://cmi8cl87udr2g" path="res://components/gibs/bone_gib.tscn" id="2_sy1ej"]
+[ext_resource type="PackedScene" uid="uid://08ijqabft852" path="res://components/gibs/flesh_gib.tscn" id="3_ghetr"]
+[ext_resource type="PackedScene" uid="uid://ckgsnbbiephfg" path="res://components/gibs/lung_gib.tscn" id="4_0nyeo"]
+[ext_resource type="PackedScene" uid="uid://cxe4waol78bm" path="res://components/gibs/archer_head.tscn" id="5_r0dem"]
+
+[node name="ArcherGibComponent" instance=ExtResource("1_go812")]
+gibs = Array[PackedScene]([ExtResource("2_sy1ej"), ExtResource("3_ghetr"), ExtResource("4_0nyeo"), ExtResource("2_sy1ej"), ExtResource("3_ghetr"), ExtResource("5_r0dem")])
+
+[node name="CPUParticles2D" parent="." index="0"]
+initial_velocity_max = 110.0

@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dx2xpus7nlxvw"]
+[gd_scene load_steps=5 format=3 uid="uid://dx2xpus7nlxvw"]
 
 [ext_resource type="Script" path="res://managers/enemy_manager.gd" id="1_b02xm"]
 [ext_resource type="PackedScene" uid="uid://dunw7oi01pqr7" path="res://enemy/knight.tscn" id="2_ct8rs"]
 [ext_resource type="PackedScene" uid="uid://eenw3pn06tb4" path="res://enemy/wizard.tscn" id="3_1m6io"]
+[ext_resource type="PackedScene" uid="uid://bkndnmthcxa3r" path="res://enemy/archer.tscn" id="4_afe83"]
 
 [node name="EnemyManager" type="Node"]
 script = ExtResource("1_b02xm")
 basic_enemy_scene = ExtResource("2_ct8rs")
 wizard_enemy_scene = ExtResource("3_1m6io")
+archer_enemy_scene = ExtResource("4_afe83")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

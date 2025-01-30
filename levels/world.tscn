@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dh4g5lvct4ome"]
+[gd_scene load_steps=17 format=4 uid="uid://dh4g5lvct4ome"]
 
 [ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="1_jcdjx"]
 [ext_resource type="PackedScene" uid="uid://df6l8uwqvwnk7" path="res://managers/wave_time_manager.tscn" id="1_ue0gm"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://biy2a0xfjo8ji" path="res://managers/blood_debt_manager.tscn" id="6_envjh"]
 [ext_resource type="Texture2D" uid="uid://b6pih58pojya8" path="res://assets/Pixel Crawler/Environment/Dungeon Prison/Assets/Tiles.png" id="9_8v73w"]
 [ext_resource type="Texture2D" uid="uid://da4t8xkvcx157" path="res://assets/Pixel Crawler/Environment/Dungeon Prison/Assets/Props.png" id="10_4bcvb"]
+[ext_resource type="PackedScene" uid="uid://couanhy2ybkhi" path="res://autoload/cursor.tscn" id="10_w3xo6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7rwuf"]
 shader = ExtResource("1_jcdjx")
@@ -624,3 +625,5 @@ tile_set = SubResource("TileSet_1o0op")
 position = Vector2(321, 180)
 
 [node name="foreground" type="Node2D" parent="." groups=["foreground_layer"]]
+
+[node name="Cursor" parent="." instance=ExtResource("10_w3xo6")]

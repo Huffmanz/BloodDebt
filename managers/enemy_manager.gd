@@ -3,6 +3,8 @@ extends Node
 @export var spawn_radius = 350
 @export var basic_enemy_scene: PackedScene
 @export var wizard_enemy_scene: PackedScene
+@export var archer_enemy_scene: PackedScene
+
 @export var wave_timer_manager:WaveManager
 @export var max_enemies: int = 999
 
@@ -83,11 +85,10 @@ func on_wave_difficulty_increased(wave_difficulty: int):
 	time_off = min(time_off, .8)
 	timer.wait_time = base_spawn_time - time_off
 	timer.wait_time /= spawn_multiplier
-	if wave_difficulty == 6:
+	if wave_difficulty == 4:
 		enemy_table.add_item(wizard_enemy_scene, 15)
-	elif wave_difficulty == 18:
-		print()
-		#enemy_table.add_item(bat_enemy_scene, 10)
+	elif wave_difficulty == 6:
+		enemy_table.add_item(archer_enemy_scene, 10)
 		
 func _enemy_health_event(multiplier: float):
 	enemy_health_mulitplier = multiplier

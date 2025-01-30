@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dunw7oi01pqr7"]
+[gd_scene load_steps=39 format=3 uid="uid://dunw7oi01pqr7"]
 
 [ext_resource type="PackedScene" uid="uid://cxy2wkr77qtfl" path="res://enemy/enemy.tscn" id="1_6y1gp"]
 [ext_resource type="PackedScene" uid="uid://csbfy5b34ecv5" path="res://items/blood_vial/blood_vial.tscn" id="2_3emie"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://do5cddj67pykp" path="res://components/shadow.tscn" id="7_4civo"]
 [ext_resource type="Script" path="res://combat/hitbox_component.gd" id="7_r72xt"]
 [ext_resource type="PackedScene" uid="uid://dp2d5yhhoypry" path="res://components/random_stream_player.tscn" id="10_3lln8"]
+[ext_resource type="PackedScene" uid="uid://cvh0746b6mmuf" path="res://items/blood_vial/blood_jug.tscn" id="11_c1mei"]
 [ext_resource type="AudioStream" uid="uid://fp1ly6uvcdu6" path="res://assets/sfx/SWSH_Swing 3 Large 03_DDUMAIS_NONE.wav" id="11_m17r0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bp88g"]
@@ -288,9 +289,7 @@ script = ExtResource("2_jr5tl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals" index="0"]
 position = Vector2(-1, -20)
 sprite_frames = SubResource("SpriteFrames_d1axd")
-animation = &"idle"
 autoplay = "default"
-frame_progress = 0.490082
 
 [node name="WeaponVisuals" type="Node2D" parent="Visuals" index="1"]
 rotation = -1.88496
@@ -307,6 +306,7 @@ position = Vector2(-1, -5)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("7_r72xt")
+damage = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/WeaponVisuals/Weapon/HitboxComponent" index="0"]
 position = Vector2(0.5, 0)
@@ -348,7 +348,7 @@ max_health = 50.0
 
 [node name="ItemDropComponent" parent="." index="4"]
 drop_percent = 0.5
-item_scenes = Array[PackedScene]([ExtResource("2_3emie"), ExtResource("2_3emie"), ExtResource("2_3emie"), ExtResource("2_3emie"), ExtResource("2_3emie"), ExtResource("2_3emie")])
+item_scenes = Array[PackedScene]([ExtResource("2_3emie"), ExtResource("2_3emie"), ExtResource("2_3emie"), ExtResource("2_3emie"), ExtResource("2_3emie"), ExtResource("11_c1mei")])
 
 [node name="CollisionShape2D" parent="HurtboxComponent" index="0"]
 position = Vector2(0, -4)

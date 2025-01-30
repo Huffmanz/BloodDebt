@@ -7,6 +7,6 @@ func apply_effect():
 	GameEvents.blood_debt_effect_add.emit(percent)
 	
 func get_description() -> String:
-	var format_string = "Increase blood bebt by %s%% of current blood."
+	var format_string = "Increase blood bebt by %s%%."
 	description = format_string % [str(percent * 100)]
 	return description

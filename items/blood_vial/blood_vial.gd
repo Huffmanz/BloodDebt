@@ -1,6 +1,8 @@
 class_name Item
 extends Node2D
 
+@export var blood_gain: int = 1
+
 @onready var pickup_area: Area2D = $PickupArea
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $PickupArea/CollisionShape2D
@@ -52,9 +54,9 @@ func tween_collect(percent: float, start_position: Vector2):
 	
 func collect():
 	collect_stream_player.play_random()
-	Utils.create_positive_numbers(global_position + (Vector2.UP * 16), 1)
+	Utils.create_positive_numbers(global_position + (Vector2.UP * 16), blood_gain)
 	await collect_stream_player.finished
-	GameEvents.emit_player_blood_gained(1)
+	GameEvents.emit_player_blood_gained(blood_gain)
 	queue_free()
 
 func disable_collision():
