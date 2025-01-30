@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BloodDebtUpgrade" load_steps=7 format=3 uid="uid://brkb1qido6oqe"]
+
+[ext_resource type="Script" path="res://resources/effects/base_effect.gd" id="1_jn31y"]
+[ext_resource type="Script" path="res://resources/effects/tutorial_effect_1.gd" id="2_8xay3"]
+[ext_resource type="Script" path="res://resources/effects/tutorial_effect_2.gd" id="3_s3bxy"]
+[ext_resource type="Script" path="res://resources/blood_debt/blood_debt_upgrade.gd" id="4_jcn4p"]
+
+[sub_resource type="Resource" id="Resource_fspn6"]
+script = ExtResource("2_8xay3")
+
+[sub_resource type="Resource" id="Resource_qq8ho"]
+script = ExtResource("3_s3bxy")
+
+[resource]
+script = ExtResource("4_jcn4p")
+id = "tutorial_card"
+name = "Tutorial Card"
+effects = Array[ExtResource("1_jn31y")]([SubResource("Resource_fspn6"), SubResource("Resource_qq8ho")])

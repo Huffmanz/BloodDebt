@@ -52,6 +52,8 @@ func pick_upgrades() -> Array[BloodDebtUpgrade]:
 	var upgrade_pool: Array[BloodDebtUpgrade] = blood_debt_upgrades.duplicate()
 	var chosen_upgrades: Array[BloodDebtUpgrade] = []
 	for i in 3:
+		if upgrade_pool.size() == 0:
+			continue
 		var chosen_upgrade = upgrade_pool.pick_random()
 		upgrade_pool.erase(chosen_upgrade)
 		chosen_upgrades.append(chosen_upgrade)

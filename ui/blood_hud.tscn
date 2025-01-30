@@ -48,7 +48,7 @@ text = "90
 label_settings = SubResource("LabelSettings_5qfy6")
 vertical_alignment = 1
 
-[node name="BloodText2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="BloodDescripttion" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
@@ -68,7 +68,7 @@ text = "25
 "
 label_settings = SubResource("LabelSettings_5qfy6")
 
-[node name="BloodDebtText2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="BloodDebtDescription" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0

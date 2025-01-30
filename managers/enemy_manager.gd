@@ -85,6 +85,7 @@ func on_wave_difficulty_increased(wave_difficulty: int):
 	time_off = min(time_off, .8)
 	timer.wait_time = base_spawn_time - time_off
 	timer.wait_time /= spawn_multiplier
+	timer.wait_time = max(1, timer.wait_time)
 	if wave_difficulty == 4:
 		enemy_table.add_item(wizard_enemy_scene, 15)
 	elif wave_difficulty == 6:

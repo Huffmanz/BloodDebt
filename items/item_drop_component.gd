@@ -33,6 +33,6 @@ func spawn_item(item:PackedScene):
 	var item_instance = item.instantiate() as Node2D
 	if entities_layer == null:
 		return
-	get_tree().current_scene.add_child(item_instance)
+	entities_layer.add_child(item_instance)
 	item_instance.global_position = spawn_position + (Vector2(randf_range(-10.0, 10.0), randf_range(-10.0, -10.0)))
 	

@@ -9,11 +9,13 @@ signal pay_debt
 @onready var pay_debt_button: Button = %PayDebtButton	
 @onready var blood_debt_amount: Label = %BloodDebtAmount
 @onready var blood_debt_shaker: Shaker = %BloodDebtShaker
+@onready var current_blood_amount: Label = %CurrentBloodAmount
 
 func _ready():
 	GameEvents.blood_debt_updated.connect(_blood_debt_updated)
 	pay_debt_button.pressed.connect(_pay_debt_button)
 	get_tree().paused = true
+	current_blood_amount.text = str(Utils.get_player().health_component.current_health)
 	
 func set_ability_upgrades(upgrades: Array[BloodDebtUpgrade]):
 	var delay = 0

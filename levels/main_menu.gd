@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 		hitbox_component.monitorable = false
 		hitbox_component.monitoring = false
 func _start_button_pressed():
-	ScreenTransition.transition_to_scene("res://levels/world.tscn")
+	ScreenTransition.transition_to_scene("res://levels/tutorial.tscn")
 	
 func _quit_button_pressed():
 	get_tree().quit(0)

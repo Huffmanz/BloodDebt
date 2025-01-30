@@ -42,19 +42,22 @@ layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="CurrentBloodContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/BloodContainer"]
-visible = false
 layout_mode = 2
 
 [node name="CurrentBloodContainer" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/BloodContainer/CurrentBloodContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.227451, 0.0352941, 0.0666667, 1)
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "Current Blood:"
 
 [node name="CurrentBloodAmount" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/BloodContainer/CurrentBloodContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.227451, 0.0352941, 0.0666667, 1)
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "100"
 
@@ -65,6 +68,7 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.227451, 0.0352941, 0.0666667, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "Blood Debt:"
@@ -72,6 +76,7 @@ text = "Blood Debt:"
 [node name="BloodDebtAmount" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/BloodContainer/BloodDebtContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.227451, 0.0352941, 0.0666667, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "50

@@ -14,7 +14,6 @@ func _process(delta):
 	var time_elapsed = wave_time_manager.get_time_elapsed()
 	label.text = format_seconds_to_string(time_elapsed)
 
-
 func format_seconds_to_string(seconds: float):
 	var minutes = floor(seconds / 60)
 	var remaining_seconds = seconds - (minutes * 60)
