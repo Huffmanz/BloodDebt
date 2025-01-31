@@ -88,7 +88,7 @@ func on_wave_difficulty_increased(wave_difficulty: int):
 	timer.wait_time = max(1, timer.wait_time)
 	if wave_difficulty == 4:
 		enemy_table.add_item(wizard_enemy_scene, 15)
-	elif wave_difficulty == 6:
+	elif wave_difficulty == 8:
 		enemy_table.add_item(archer_enemy_scene, 10)
 		
 func _enemy_health_event(multiplier: float):

@@ -59,7 +59,10 @@ func _physics_process(delta: float) -> void:
 func fire_state(delta: float) -> void:
 	if state_init:
 		shots_to_fire = randi_range(1,3)
-	weapon_visuals.look_at(player.global_position)
+	if player:
+		weapon_visuals.look_at(player.global_position)
+	else:
+		weapon_visuals.look_at(get_global_mouse_position())
 	flip()
 	fire()
 	if shots_to_fire <= 0:
@@ -73,7 +76,10 @@ func dash_state(delta: float)-> void:
 		hurtbox_component.monitoring = false
 		hurtbox_component.monitorable = false
 		dash_particles.emitting = true
-		dash_direction = player.global_position - global_position
+		if player:
+			dash_direction = player.global_position - global_position
+		else:
+			dash_direction = get_global_mouse_position() - global_position
 		dash_direction *= -1
 	if dashing:
 		velocity = dashing_component.accelerate_in_direction(dash_direction)
@@ -103,13 +109,21 @@ func fire():
 	bow.play("fire")
 	await bow.animation_finished
 	var projectile = ARROW_PROJECTILE.instantiate()
-	var direction = player.global_position - global_position
+	var direction : Vector2
+	if player:
+		direction = player.global_position - global_position
+	else:
+		direction = get_global_mouse_position() - global_position
 	get_tree().current_scene.add_child(projectile)
 	projectile.global_position = bow.global_position
 	projectile.rotation = direction.angle()
 
 func flip():
-	var move_sign = sign((global_position.direction_to(player.global_position)).x)
+	var move_sign
+	if player:
+		move_sign = sign((global_position.direction_to(player.global_position)).x)
+	else:
+		move_sign = sign((global_position.direction_to(get_global_mouse_position())).x)
 	if(move_sign != 0):
 		visuals.scale = Vector2(move_sign, 1)
 		

@@ -35,6 +35,9 @@ particles_anim_loop = false
 max_speed = 400
 acceleration = 100.0
 
+[node name="HitboxComponent" parent="." index="1"]
+damage = 10
+
 [node name="CollisionShape2D" parent="HitboxComponent" index="0"]
 position = Vector2(4, 0)
 rotation = 1.5708
