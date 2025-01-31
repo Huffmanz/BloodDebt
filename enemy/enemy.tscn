@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxy2wkr77qtfl"]
+[gd_scene load_steps=10 format=3 uid="uid://cxy2wkr77qtfl"]
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_8lvpl"]
 [ext_resource type="Script" path="res://movement/velocity_component.gd" id="1_f11ad"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b7ypim4t8ele4" path="res://items/item_drop_component.tscn" id="4_p048s"]
 [ext_resource type="Script" path="res://combat/hitbox_component.gd" id="5_03rxt"]
 [ext_resource type="PackedScene" uid="uid://dava0f4b01tnj" path="res://components/delete_on_wave_complete.tscn" id="7_kljp8"]
+[ext_resource type="PackedScene" uid="uid://cfcigltsple53" path="res://components/hit_flash_component.tscn" id="8_1qn0g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jp4u5"]
 size = Vector2(14, 24)
@@ -46,3 +47,6 @@ script = ExtResource("5_03rxt")
 shape = SubResource("RectangleShape2D_jp4u5")
 
 [node name="DeleteOnWaveComplete" parent="." instance=ExtResource("7_kljp8")]
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_1qn0g")]
+health_component = NodePath("../HealthComponent")

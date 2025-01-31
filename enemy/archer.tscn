@@ -155,3 +155,6 @@ initial_velocity_min = 10.0
 initial_velocity_max = 30.0
 anim_speed_min = 2.0
 anim_speed_max = 2.0
+
+[node name="HitFlashComponent" parent="." index="10" node_paths=PackedStringArray("sprite")]
+sprite = NodePath("../Visuals/AnimatedSprite2D")

@@ -97,3 +97,6 @@ autostart = true
 [node name="WeaponPivot" type="Marker2D" parent="." index="10"]
 
 [node name="Muzzle" type="Marker2D" parent="WeaponPivot" index="0"]
+
+[node name="HitFlashComponent" parent="." index="12" node_paths=PackedStringArray("sprite")]
+sprite = NodePath("../Visuals/AnimatedSprite2D")

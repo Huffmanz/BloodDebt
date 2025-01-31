@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://k0b7bq4x6osb"]
+[gd_scene load_steps=42 format=3 uid="uid://k0b7bq4x6osb"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_v6xto"]
 [ext_resource type="PackedScene" uid="uid://bmqxntns8k615" path="res://movement/velocity_component.tscn" id="2_3dy3y"]
@@ -14,6 +14,8 @@
 [ext_resource type="AudioStream" uid="uid://bviuo82ojsx7m" path="res://assets/sfx/player/Hero_hit_1.mp3" id="10_t4uf8"]
 [ext_resource type="AudioStream" uid="uid://d155vg1f75xy7" path="res://assets/sfx/player/Hero_hit_2.mp3" id="11_d6g6r"]
 [ext_resource type="AudioStream" uid="uid://brpluue0bmxu2" path="res://assets/sfx/player/Hero_hit_3.mp3" id="12_hg5fe"]
+[ext_resource type="PackedScene" uid="uid://cfcigltsple53" path="res://components/hit_flash_component.tscn" id="15_6n3ph"]
+[ext_resource type="Shader" path="res://components/hit_flash_component.gdshader" id="16_jc4ev"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sim1c"]
 radius = 8.0
@@ -186,6 +188,11 @@ particles_anim_h_frames = 3
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u8hqp"]
+resource_local_to_scene = true
+shader = ExtResource("16_jc4ev")
+shader_parameter/lerp_percent = null
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_v6xto")
@@ -263,3 +270,8 @@ initial_velocity_min = 10.0
 initial_velocity_max = 30.0
 anim_speed_min = 2.0
 anim_speed_max = 2.0
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("15_6n3ph")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../AnimatedSprite2D")
+hit_flash_material = SubResource("ShaderMaterial_u8hqp")

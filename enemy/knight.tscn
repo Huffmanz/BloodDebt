@@ -370,3 +370,6 @@ streams = Array[AudioStream]([ExtResource("11_m17r0")])
 wait_time = 4.0
 one_shot = true
 autostart = true
+
+[node name="HitFlashComponent" parent="." index="11" node_paths=PackedStringArray("sprite")]
+sprite = NodePath("../Visuals/AnimatedSprite2D")

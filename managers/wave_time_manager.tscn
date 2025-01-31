@@ -7,5 +7,6 @@ process_mode = 3
 script = ExtResource("1_n8m0m")
 
 [node name="Timer" type="Timer" parent="."]
+process_mode = 1
 wait_time = 30.0
 one_shot = true

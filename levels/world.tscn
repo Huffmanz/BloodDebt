@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=4 uid="uid://dh4g5lvct4ome"]
+[gd_scene load_steps=18 format=4 uid="uid://dh4g5lvct4ome"]
 
+[ext_resource type="Script" path="res://levels/world.gd" id="1_7iqhx"]
 [ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="1_jcdjx"]
 [ext_resource type="PackedScene" uid="uid://df6l8uwqvwnk7" path="res://managers/wave_time_manager.tscn" id="1_ue0gm"]
 [ext_resource type="PackedScene" uid="uid://k0b7bq4x6osb" path="res://player/player.tscn" id="1_yb148"]
@@ -575,6 +576,7 @@ sources/3 = SubResource("TileSetAtlasSource_daqjr")
 sources/4 = SubResource("TileSetAtlasSource_jlb1s")
 
 [node name="world" type="Node2D"]
+script = ExtResource("1_7iqhx")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
